@@ -38,21 +38,24 @@ export default {
           title: "A man called Ove",
           author: "Frederik Backman",
           price: "20.00",
-          image: "./assets/books/book-ove.jpg"
+          image: "./assets/books/book-ove.jpg",
+          qty: 10
         },
         {
           id: 22,
           title: "Brit-Marie was here",
           author: "Frederik Backman",
           price: "21.99",
-          image: "./assets/books/book-marie.jpg"
+          image: "./assets/books/book-marie.jpg",
+          qty: 5
         },
         {
           id: 33,
           title: "The Witcher - The last wish",
           author: "Andrezej Sapkowski",
           price: "16.00",
-          image: "./assets/books/book-witcher.jpg"
+          image: "./assets/books/book-witcher.jpg",
+          qty: 2
         }
       ]
     };

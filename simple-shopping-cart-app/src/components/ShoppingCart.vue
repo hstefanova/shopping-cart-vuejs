@@ -2,30 +2,32 @@
   <div>
     <h1>Shopping Cart</h1>
 
-    <div v-for="book in cart" :key="book.id" class="product-row">
+    <!-- <div v-for="book in cartItems" :key="book.id" class="product-row">
       <h3>{{ book.title }}</h3>
-      <p>Price: ${{ book.price }} x {{ qty }}</p>
-    </div>
+      <p>Price: ${{ book.price }}</p>
+    </div>-->
+    <ShoppingCartItems v-for="item in cartItems" :key="item.id" :item="item" />
   </div>
 </template>
 
 <script>
 import { EventBus } from "@/event-bus";
+import ShoppingCartItems from "./ShoppingCartItem.vue";
 
 export default {
   props: ["books"],
   data() {
     return {
-      cart: [],
-      qty: 1
+      cartItems: []
     };
   },
+  components: {
+    ShoppingCartItems
+  },
   created() {
-    EventBus.$on("add-to-cart", id => {
-      if (!this.cart.includes(id)) {
-        this.cart.push(id);
-      } else {
-        this.qty++;
+    EventBus.$on("add-to-cart", book => {
+      if (!this.cartItems.includes(book)) {
+        this.cartItems.push(book);
       }
     });
   }
