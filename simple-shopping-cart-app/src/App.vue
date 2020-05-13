@@ -16,7 +16,7 @@
               <ProductList :books="books" />
             </div>
             <div class="main__col main__aside">
-              <ShoppingCart />
+              <ShoppingCart :books="books" />
             </div>
           </div>
         </div>
@@ -37,21 +37,21 @@ export default {
           id: 11,
           title: "A man called Ove",
           author: "Frederik Backman",
-          price: 20.0,
+          price: "20.00",
           image: "./assets/books/book-ove.jpg"
         },
         {
           id: 22,
           title: "Brit-Marie was here",
           author: "Frederik Backman",
-          price: 21.99,
+          price: "21.99",
           image: "./assets/books/book-marie.jpg"
         },
         {
           id: 33,
           title: "The Witcher - The last wish",
           author: "Andrezej Sapkowski",
-          price: 16.0,
+          price: "16.00",
           image: "./assets/books/book-witcher.jpg"
         }
       ]

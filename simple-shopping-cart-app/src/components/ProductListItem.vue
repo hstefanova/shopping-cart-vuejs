@@ -8,8 +8,6 @@
         <h3 class="product__title">{{ book.title }}</h3>
         <p class="product__price">{{ book.price }}$</p>
         <a href="#" class="btn" @click="addToCart">Add to Cart</a>
-
-        <p>ID: {{ productID }}</p>
       </div>
     </div>
   </div>
@@ -20,14 +18,10 @@ import { EventBus } from "@/event-bus";
 
 export default {
   props: ["book"],
-  computed: {
-    productID() {
-      return this.book.id;
-    }
-  },
+
   methods: {
     addToCart: function() {
-      EventBus.$emit("add-to-cart", 10);
+      EventBus.$emit("add-to-cart", this.book);
     }
   }
 };
