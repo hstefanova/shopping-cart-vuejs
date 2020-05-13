@@ -1,0 +1,25 @@
+{
+  "books": [
+    {
+      "id": 11,
+      "title": "A man called Ove",
+      "author": "Frederik Backman",
+      "price": 20.0,
+      "image": "./assets/books/book-ove.jpg"
+    },
+    {
+      "id": 22,
+      "title": "Brit-Marie was here",
+      "author": "Frederik Backman",
+      "price": 21.99,
+      "image": "./assets/books/book-marie.jpg"
+    },
+    {
+      "id": 33,
+      "title": "The Witcher - The last wish",
+      "author": "Andrezej Sapkowski",
+      "price": 16.0,
+      "image": "./assets/books/book-witcher.jpg"
+    }
+  ]
+}
