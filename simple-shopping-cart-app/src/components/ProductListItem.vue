@@ -22,7 +22,6 @@ export default {
   methods: {
     addToCart: function() {
       EventBus.$emit("add-to-cart", this.book);
-      // EventBus.$emit("update-qty");
     }
   }
 };

@@ -2,11 +2,9 @@
   <div>
     <h1>Shopping Cart</h1>
 
-    <!-- <div v-for="book in cartItems" :key="book.id" class="product-row">
-      <h3>{{ book.title }}</h3>
-      <p>Price: ${{ book.price }}</p>
-    </div>-->
     <ShoppingCartItems v-for="item in cartItems" :key="item.id" :item="item" />
+
+    <!-- <p>Total: {{ total }}</p> -->
   </div>
 </template>
 
@@ -21,6 +19,7 @@ export default {
       cartItems: []
     };
   },
+
   components: {
     ShoppingCartItems
   },
