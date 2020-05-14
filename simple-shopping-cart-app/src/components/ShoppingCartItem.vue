@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="cart__item">
     <h3>{{ item.title }}</h3>
-    <p>Price: ${{ item.price }} x {{ qty }}</p>
+    <p>Price: ${{ price }} x {{ qty }}</p>
     <p>Subtotal {{ subtotal }}</p>
   </div>
 </template>
@@ -17,6 +17,9 @@ export default {
     };
   },
   computed: {
+    price: function() {
+      return this.item.price.toFixed(2);
+    },
     subtotal: function() {
       return (Number(this.item.price) * this.qty).toFixed(2);
     }
@@ -30,3 +33,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.cart__item + .cart__item {
+  margin-top: 20px;
+}
+</style>

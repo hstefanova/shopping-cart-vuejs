@@ -2,9 +2,13 @@
   <div>
     <h1>Shopping Cart</h1>
 
-    <ShoppingCartItems v-for="item in cartItems" :key="item.id" :item="item" />
+    <ShoppingCartItems
+      v-for="item in uniqueItems"
+      :key="item.id"
+      :item="item"
+    />
 
-    <!-- <p>Total: {{ total }}</p> -->
+    <p>Total: {{ total }}</p>
   </div>
 </template>
 
@@ -16,8 +20,21 @@ export default {
   props: ["books"],
   data() {
     return {
-      cartItems: []
+      cartItems: [],
+      uniqueItems: []
     };
+  },
+  computed: {
+    total: function() {
+      if (this.cartItems.length) {
+        return this.cartItems
+          .map(item => item.price)
+          .reduce((acc, curr) => acc + curr)
+          .toFixed(2);
+      } else {
+        return "0.00";
+      }
+    }
   },
 
   components: {
@@ -25,8 +42,10 @@ export default {
   },
   created() {
     EventBus.$on("add-to-cart", book => {
-      if (!this.cartItems.includes(book)) {
-        this.cartItems.push(book);
+      this.cartItems.push(book);
+
+      if (!this.uniqueItems.includes(book)) {
+        this.uniqueItems.push(book);
       }
     });
   }
