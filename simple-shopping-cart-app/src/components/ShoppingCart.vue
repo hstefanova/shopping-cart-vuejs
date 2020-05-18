@@ -3,12 +3,14 @@
     <h1>Shopping Cart</h1>
 
     <ShoppingCartItems
-      v-for="item in uniqueItems"
+      v-for="item in cartItemsUnique"
       :key="item.id"
       :item="item"
+      @add-qty-to-cart="addItem(item)"
+      @remove-qty-from-cart="removeItem(item)"
     />
-
-    <p>Total: {{ total }}</p>
+    <p v-if="cartItems.length">Total: {{ total }}</p>
+    <p v-else>{{ total }}</p>
   </div>
 </template>
 
@@ -20,8 +22,7 @@ export default {
   props: ["books"],
   data() {
     return {
-      cartItems: [],
-      uniqueItems: []
+      cartItems: []
     };
   },
   computed: {
@@ -32,21 +33,30 @@ export default {
           .reduce((acc, curr) => acc + curr)
           .toFixed(2);
       } else {
-        return "0.00";
+        return "No items in the cart";
       }
+    },
+    cartItemsUnique: function() {
+      return this.cartItems.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      });
     }
   },
-
+  methods: {
+    addItem: function(cartItem) {
+      this.cartItems.push(cartItem);
+    },
+    removeItem: function(cartItem) {
+      let target = this.cartItems.findIndex(item => cartItem === item);
+      this.cartItems.splice(target, 1);
+    }
+  },
   components: {
     ShoppingCartItems
   },
   created() {
     EventBus.$on("add-to-cart", book => {
       this.cartItems.push(book);
-
-      if (!this.uniqueItems.includes(book)) {
-        this.uniqueItems.push(book);
-      }
     });
   }
 };
