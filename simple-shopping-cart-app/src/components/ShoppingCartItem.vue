@@ -26,7 +26,7 @@ export default {
   },
   created() {
     EventBus.$on("add-to-cart", book => {
-      if (book.id === this.item.id && this.qty < this.item.qty) {
+      if (book.id === this.item.id) {
         this.qty++;
       }
     });
