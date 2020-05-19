@@ -2,7 +2,7 @@
   <div class="product">
     <div class="product__inner">
       <div class="product__image">
-        <img :src="book.image" alt="" width="100" height="150" />
+        <img :src="imageURL" alt="" width="100" height="150" />
       </div>
       <div class="product__content">
         <h3 class="product__title">{{ book.title }}</h3>
@@ -21,6 +21,9 @@ export default {
   computed: {
     price: function() {
       return this.book.price.toFixed(2);
+    },
+    imageURL: function() {
+      return require(`@/assets/books/${this.book.image}.jpg`);
     }
   },
   methods: {
@@ -31,4 +34,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+img {
+  display: inline-block;
+}
+</style>
