@@ -3,7 +3,7 @@
     <div class="main">
       <header class="main__head">
         <div class="shell">
-          <h1>SearchBar</h1>
+          <SearchBar />
         </div>
       </header>
 
@@ -28,6 +28,7 @@
 <script>
 import ProductList from "./components/ProductList.vue";
 import ShoppingCart from "./components/ShoppingCart.vue";
+import SearchBar from "./components/SearchBar.vue";
 
 export default {
   data() {
@@ -62,7 +63,8 @@ export default {
   },
   components: {
     ProductList,
-    ShoppingCart
+    ShoppingCart,
+    SearchBar
   }
 };
 </script>
