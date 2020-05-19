@@ -1,5 +1,8 @@
 <template>
   <div class="product-list">
+    <p v-if="term">
+      Found {{ filteredResults.length }} results for search <em> {{ term }}</em>
+    </p>
     <ProductListItem
       v-for="book in filteredResults"
       :book="book"
@@ -15,7 +18,8 @@ export default {
   props: ["books"],
   data() {
     return {
-      filteredResults: [...this.books]
+      filteredResults: [...this.books],
+      term: ""
     };
   },
   components: {
@@ -32,8 +36,9 @@ export default {
     }
   },
   created() {
-    EventBus.$on("search-term", term => {
-      this.searchForMatches(this.books, term);
+    EventBus.$on("search-term", searchTerm => {
+      this.searchForMatches(this.books, searchTerm);
+      this.term = searchTerm;
     });
   }
 };

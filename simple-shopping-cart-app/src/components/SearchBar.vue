@@ -2,9 +2,8 @@
   <div>
     <h1>SearchBar</h1>
 
-    <input type="text" v-model="searchInput" />
+    <input type="text" v-model="searchInput" @keyup.delete="search" />
     <button @click="search">Search</button>
-    <p>{{ searchInputConverted }}</p>
   </div>
 </template>
 

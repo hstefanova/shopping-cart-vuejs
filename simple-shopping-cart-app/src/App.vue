@@ -11,8 +11,6 @@
         <div class="shell">
           <div class="main__cols">
             <div class="main__col main__content">
-              <p>Found 0 results for search term <strong> term</strong></p>
-
               <ProductList :books="books" />
             </div>
             <div class="main__col main__aside">
