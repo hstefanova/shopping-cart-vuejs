@@ -1,16 +1,21 @@
 <template>
-  <div>
-    <h1>Shopping Cart</h1>
+  <div class="cart">
+    <h1 class="cart__title">Shopping Cart</h1>
 
-    <ShoppingCartItems
-      v-for="item in cartItemsUnique"
-      :key="item.id"
-      :item="item"
-      @add-qty-to-cart="addItem(item)"
-      @remove-qty-from-cart="removeItem(item)"
-    />
-    <p v-if="cartItems.length">Total: {{ total }}</p>
-    <p v-else>{{ total }}</p>
+    <div class="cart__body">
+      <ShoppingCartItems
+        v-for="item in cartItemsUnique"
+        :key="item.id"
+        :item="item"
+        @add-qty-to-cart="addItem(item)"
+        @remove-qty-from-cart="removeItem(item)"
+      />
+    </div>
+
+    <div class="cart__actions">
+      <p v-if="cartItems.length">Total: {{ total }}</p>
+      <p v-else>{{ total }}</p>
+    </div>
   </div>
 </template>
 
@@ -62,4 +67,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.cart .cart__title {
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.26);
+}
+
+.cart .cart__body {
+  padding: 15px 0 0;
+}
+</style>

@@ -1,14 +1,18 @@
 <template>
   <div class="cart__item">
     <div class="cart__item-content">
-      <h3>{{ item.title }}</h3>
-      <p>Price: ${{ price }} x {{ qty }}</p>
-      <p>Subtotal {{ subtotal }}</p>
-    </div>
-    <div class="cart__item-actions">
-      <button class="btn btn--square" @click="addQtyToCart">+</button>
+      <div class="cart__item-head">
+        <h3>{{ item.title }}</h3>
+        <h3>${{ subtotal }}</h3>
+      </div>
+      <div class="cart__item-body">
+        <p>${{ price }} x {{ qty }}</p>
+        <div class="cart__item-actions">
+          <button class="btn btn--square" @click="addQtyToCart">+</button>
 
-      <button class="btn btn--square" @click="removeFromCart">-</button>
+          <button class="btn btn--square" @click="removeFromCart">-</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -52,8 +56,26 @@ export default {
 </script>
 
 <style scoped>
+.cart__item {
+  padding-bottom: 15px;
+}
 .cart__item + .cart__item {
   margin-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.26);
+}
+
+.cart__item .cart__item-head {
+  display: flex;
+  justify-content: space-between;
+}
+.cart__item .cart__item-body {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.cart__item .cart__item-actions {
+  padding-left: 20px;
 }
 
 .btn + .btn {

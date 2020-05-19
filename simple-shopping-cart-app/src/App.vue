@@ -76,6 +76,18 @@ export default {
 
 body {
   background: lightgray;
+  font-family: Quicksand, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
 }
 
 .shell {
@@ -106,7 +118,6 @@ body {
 .main .main__col {
   width: 50%;
   margin: 0 15px;
-  background: white;
 }
 
 /* Buttons */
