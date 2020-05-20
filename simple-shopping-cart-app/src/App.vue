@@ -11,10 +11,10 @@
         <div class="shell">
           <div class="main__cols">
             <div class="main__col main__content">
-              <ProductList :books="books" />
+              <ProductList />
             </div>
             <div class="main__col main__aside">
-              <ShoppingCart :books="books" />
+              <ShoppingCart />
             </div>
           </div>
         </div>
@@ -29,36 +29,6 @@ import ShoppingCart from "./components/ShoppingCart.vue";
 import SearchBar from "./components/SearchBar.vue";
 
 export default {
-  data() {
-    return {
-      books: [
-        {
-          id: 11,
-          title: "A man called Ove",
-          author: "Frederik Backman",
-          price: 20.0,
-          image: "book-ove",
-          qty: 10
-        },
-        {
-          id: 22,
-          title: "Brit-Marie was here",
-          author: "Frederik Backman",
-          price: 21.99,
-          image: "book-marie",
-          qty: 5
-        },
-        {
-          id: 33,
-          title: "The Witcher - The last wish",
-          author: "Andrezej Sapkowski",
-          price: 16.0,
-          image: "book-witcher",
-          qty: 2
-        }
-      ]
-    };
-  },
   components: {
     ProductList,
     ShoppingCart,

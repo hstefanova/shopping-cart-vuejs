@@ -4,9 +4,7 @@
       <div
         class="product__image"
         :style="{ backgroundImage: 'url(' + imageURL + ')' }"
-      >
-        <!-- <img :src="imageURL" alt="" width="100" height="150" /> -->
-      </div>
+      ></div>
       <div class="product__content">
         <div class="product__content-inner">
           <h3 class="product__title">{{ book.title }}</h3>

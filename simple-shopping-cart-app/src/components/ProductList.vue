@@ -14,11 +14,12 @@
 <script>
 import ProductListItem from "./ProductListItem.vue";
 import { EventBus } from "@/event-bus";
+import axios from "axios";
 export default {
-  props: ["books"],
   data() {
     return {
-      filteredResults: [...this.books],
+      books: [],
+      filteredResults: [],
       term: ""
     };
   },
@@ -36,6 +37,14 @@ export default {
     }
   },
   created() {
+    axios
+      .get("http://localhost:3000/books")
+      .then(response => {
+        this.books = response.data;
+        this.filteredResults = [...this.books];
+      })
+      .catch(err => "There is an error: " + err.response);
+
     EventBus.$on("search-term", searchTerm => {
       this.searchForMatches(this.books, searchTerm);
       this.term = searchTerm;

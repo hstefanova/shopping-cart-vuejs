@@ -26,7 +26,6 @@ import { EventBus } from "@/event-bus";
 import ShoppingCartItems from "./ShoppingCartItem.vue";
 
 export default {
-  props: ["books"],
   data() {
     return {
       cartItems: []
