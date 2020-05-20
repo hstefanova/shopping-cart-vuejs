@@ -1,10 +1,10 @@
 <template>
   <div class="product">
     <div class="product__inner">
-      <div
+      <!-- <div
         class="product__image"
         :style="{ backgroundImage: 'url(' + imageURL + ')' }"
-      ></div>
+      ></div> -->
       <div class="product__content">
         <div class="product__content-inner">
           <h3 class="product__title">{{ book.title }}</h3>

@@ -14,7 +14,7 @@
 <script>
 import ProductListItem from "./ProductListItem.vue";
 import { EventBus } from "@/event-bus";
-import axios from "axios";
+import BookService from "@/services/BookService";
 export default {
   data() {
     return {
@@ -37,8 +37,7 @@ export default {
     }
   },
   created() {
-    axios
-      .get("http://localhost:3000/books")
+    BookService.getBooks()
       .then(response => {
         this.books = response.data;
         this.filteredResults = [...this.books];

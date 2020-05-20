@@ -4,7 +4,7 @@
       "id": 11,
       "title": "A man called Ove",
       "author": "Frederik Backman",
-      "price": 20.0,
+      "price": 20,
       "image": "book-ove"
     },
     {
@@ -18,8 +18,26 @@
       "id": 33,
       "title": "The Witcher - The last wish",
       "author": "Andrezej Sapkowski",
-      "price": 16.0,
+      "price": 16,
       "image": "book-witcher"
+    },
+    {
+      "id": 61393,
+      "title": "test",
+      "author": "test",
+      "price": 12
+    },
+    {
+      "id": 71758,
+      "title": "test",
+      "author": "tet",
+      "price": 12
+    },
+    {
+      "id": 20647,
+      "title": "test3",
+      "author": "test3",
+      "price": 12.5
     }
   ]
 }
