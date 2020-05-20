@@ -15,7 +15,7 @@
 
       <div class="form__row">
         <label>Book Price:</label>
-        <input type="text" v-model="book.price" />
+        <input type="number" v-model="book.price" />
       </div>
 
       <p v-if="errors.length">

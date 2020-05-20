@@ -43,7 +43,13 @@
       "id": 83379,
       "title": "test",
       "author": "test",
-      "price": null
+      "price": 11
+    },
+    {
+      "id": 12380,
+      "title": "test22",
+      "author": "test",
+      "price": 2
     }
   ]
 }
