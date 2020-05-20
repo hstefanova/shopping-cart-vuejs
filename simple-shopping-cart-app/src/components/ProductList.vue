@@ -1,6 +1,6 @@
 <template>
   <div class="product-list">
-    <p v-if="term">
+    <p v-if="term" class="hint">
       Found {{ filteredResults.length }} results for search <em> {{ term }}</em>
     </p>
     <ProductListItem
@@ -44,4 +44,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.hint {
+  padding: 14px 0;
+}
+</style>

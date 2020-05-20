@@ -13,7 +13,9 @@
     </div>
 
     <div class="cart__actions">
-      <p v-if="cartItems.length">Total: {{ total }}</p>
+      <p v-if="cartItems.length" class="cart__total">
+        Total: <strong>${{ total }}</strong>
+      </p>
       <p v-else>{{ total }}</p>
     </div>
   </div>
@@ -71,9 +73,28 @@ export default {
 .cart .cart__title {
   padding-bottom: 10px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.26);
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 300;
 }
 
 .cart .cart__body {
   padding: 15px 0 0;
+}
+
+.cart .cart__total {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: right;
+  border-top: 1px solid rgba(0, 0, 0, 0.26);
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+.cart .cart__total strong {
+  font-weight: 300;
+  font-size: 30px;
+  padding-left: 5px;
 }
 </style>

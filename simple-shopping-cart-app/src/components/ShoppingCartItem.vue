@@ -61,12 +61,14 @@ export default {
 }
 .cart__item + .cart__item {
   margin-top: 20px;
+  padding-top: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.26);
 }
 
 .cart__item .cart__item-head {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
 }
 .cart__item .cart__item-body {
   display: flex;
@@ -76,6 +78,8 @@ export default {
 
 .cart__item .cart__item-actions {
   padding-left: 20px;
+  display: inline-block;
+  text-align: right;
 }
 
 .btn + .btn {
