@@ -2,7 +2,12 @@
   <div>
     <h1>SearchBar</h1>
 
-    <input type="text" v-model="searchInput" @keyup.delete="search" />
+    <input
+      type="text"
+      v-model="searchInput"
+      @keyup.delete="search"
+      @keyup.enter="search"
+    />
     <button @click="search">Search</button>
   </div>
 </template>
