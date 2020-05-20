@@ -38,6 +38,12 @@
       "title": "test3",
       "author": "test3",
       "price": 12.5
+    },
+    {
+      "id": 83379,
+      "title": "test",
+      "author": "test",
+      "price": null
     }
   ]
 }

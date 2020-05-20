@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="form-book">
     <h3>Create Book:</h3>
 
     <form action="" @submit.prevent="createBook">

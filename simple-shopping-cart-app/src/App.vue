@@ -3,7 +3,14 @@
     <div class="main">
       <header class="main__head">
         <div class="shell">
-          <SearchBar />
+          <div class="main__cols">
+            <div class="main__col">
+              <SearchBar />
+            </div>
+            <div class="main__col">
+              <CreateBook />
+            </div>
+          </div>
         </div>
       </header>
 
@@ -12,8 +19,6 @@
           <div class="main__cols">
             <div class="main__col main__content">
               <ProductList />
-
-              <CreateBook />
             </div>
             <div class="main__col main__aside">
               <ShoppingCart />
