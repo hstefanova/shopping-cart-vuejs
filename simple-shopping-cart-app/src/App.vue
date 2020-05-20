@@ -12,6 +12,8 @@
           <div class="main__cols">
             <div class="main__col main__content">
               <ProductList />
+
+              <CreateBook />
             </div>
             <div class="main__col main__aside">
               <ShoppingCart />
@@ -27,12 +29,14 @@
 import ProductList from "./components/ProductList.vue";
 import ShoppingCart from "./components/ShoppingCart.vue";
 import SearchBar from "./components/SearchBar.vue";
+import CreateBook from "./components/CreateBook.vue";
 
 export default {
   components: {
     ProductList,
     ShoppingCart,
-    SearchBar
+    SearchBar,
+    CreateBook
   }
 };
 </script>
