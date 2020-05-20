@@ -76,6 +76,10 @@ export default {
   font-weight: 300;
 }
 
+.product .product__price {
+  padding-top: 10px;
+}
+
 .product + .product {
   margin-top: 20px;
 }
