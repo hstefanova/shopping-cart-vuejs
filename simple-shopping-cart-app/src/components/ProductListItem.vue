@@ -1,10 +1,13 @@
 <template>
   <div class="product">
     <div class="product__inner">
-      <!-- <div
-        class="product__image"
-        :style="{ backgroundImage: 'url(' + imageURL + ')' }"
-      ></div> -->
+      <div v-if="book.image" class="product__image-wrapper">
+        <div
+          class="product__image"
+          :style="{ backgroundImage: 'url(' + imageURL + ')' }"
+        ></div>
+      </div>
+
       <div class="product__content">
         <div class="product__content-inner">
           <h3 class="product__title">{{ book.title }}</h3>
@@ -61,8 +64,11 @@ export default {
   width: 100%;
 }
 
+.product .product__image-wrapper {
+  display: flex;
+}
+
 .product .product__content {
-  padding-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -75,7 +81,7 @@ export default {
 }
 
 .product .product__price {
-  padding-top: 10px;
+  padding: 10px 0;
 }
 
 .product + .product {
@@ -88,5 +94,6 @@ export default {
   height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
+  margin-right: 20px;
 }
 </style>
