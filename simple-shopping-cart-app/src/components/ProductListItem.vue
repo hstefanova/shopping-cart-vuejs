@@ -4,7 +4,7 @@
       <div v-if="book.image" class="product__image-wrapper">
         <div
           class="product__image"
-          :style="{ backgroundImage: 'url(' + imageURL + ')' }"
+          :style="{ backgroundImage: 'url(' + book.image + ')' }"
         ></div>
       </div>
 
@@ -31,9 +31,6 @@ export default {
   computed: {
     price: function() {
       return this.book.price.toFixed(2);
-    },
-    imageURL: function() {
-      return require(`@/assets/books/${this.book.image}.jpg`);
     }
   },
   methods: {
