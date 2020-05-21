@@ -1,32 +1,32 @@
 <template>
-  <div class="form-book">
-    <h3>Create Book:</h3>
+  <div class="form-create">
+    <h3 class="form__title">Add new book to store:</h3>
 
     <form action="" @submit.prevent="createBook">
       <div class="form__row">
-        <label>Book Title: {{ book.title }}</label>
-        <input type="text" v-model="book.title" />
+        <label class="hidden">Title: </label>
+        <input type="text" class="form__field" v-model="book.title" placeholder="Title"/>
       </div>
 
       <div class="form__row">
-        <label>Book Author:</label>
-        <input type="text" v-model="book.author" />
+        <label class="hidden">Author:</label>
+        <input type="text" class="form__field" v-model="book.author" placeholder="Author" />
       </div>
 
       <div class="form__row">
-        <label>Book Price:</label>
-        <input type="number" v-model="book.price" />
+        <label class="hidden">Price:</label>
+        <input type="number" class="form__field" v-model="book.price" placeholder="Price" />
       </div>
 
       <p v-if="errors.length">
-    <b>Please correct the following error(s):</b>
-    <ul>
-      <li v-for="error in errors" :key="error">{{ error }}</li>
-    </ul>
-  </p>
+        <strong>Please correct the following error(s):</strong>
+        <ul>
+          <li v-for="error in errors" :key="error">{{ error }}</li>
+        </ul>
+      </p>
 
       <div class="form__actions">
-        <button type="submit">Create</button>
+        <button type="submit" class="btn btn--transparent form__btn">Create</button>
       </div>
     </form>
   </div>
@@ -78,4 +78,25 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.form-create {
+  width: 300px;
+}
+
+.form-create input,
+.form-create button {
+  width: 100%;
+  height: 40px;
+}
+
+.form-create .form__title {
+  margin-bottom: 10px;
+}
+
+.form-create .form__btn {
+  margin-top: 15px;
+}
+.form-create .form__row + .form__row {
+  margin-top: 10px;
+}
+</style>

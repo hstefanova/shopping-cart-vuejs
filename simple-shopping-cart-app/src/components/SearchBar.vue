@@ -1,14 +1,17 @@
 <template>
-  <div class="search-bar">
-    <h1>SearchBar</h1>
-
-    <input
-      type="text"
-      v-model="searchInput"
-      @keyup.delete="search"
-      @keyup.enter="search"
-    />
-    <button @click="search">Search</button>
+  <div class="search">
+    <div class="search__inner">
+      <input
+        type="text"
+        class="search__field"
+        v-model="searchInput"
+        @keyup.delete="search"
+        @keyup.enter="search"
+      />
+      <button @click="search" class="btn btn--transparent search__btn">
+        Search
+      </button>
+    </div>
   </div>
 </template>
 
@@ -16,12 +19,9 @@
 import { EventBus } from "@/event-bus";
 export default {
   data() {
-    return { searchInput: "" };
-  },
-  computed: {
-    searchInputConverted: function() {
-      return this.searchInput.toLowerCase();
-    }
+    return {
+      searchInput: ""
+    };
   },
   methods: {
     search: function() {
@@ -31,4 +31,16 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.search .search__inner {
+  display: flex;
+  align-items: stretch;
+}
+.search .search__btn {
+  margin-left: 3px;
+}
+
+.search .search__field {
+  height: auto;
+}
+</style>

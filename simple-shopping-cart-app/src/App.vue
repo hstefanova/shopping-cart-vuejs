@@ -66,7 +66,24 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
+  font-weight: 300;
+}
+
+input {
+  min-width: 270px;
+  min-height: 30px;
+  border: 0;
+  border-radius: 2px;
+  padding: 5px 10px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 5px 2px rgb(219, 92, 92);
+}
+
+.hidden {
+  display: none;
 }
 
 .shell {
@@ -83,6 +100,9 @@ h6 {
 .main .main__head {
   background: lightcoral;
   padding: 100px 0;
+}
+.main .main__head .main__cols {
+  align-items: flex-end;
 }
 .main .main__body {
   padding: 20px 0;
@@ -118,7 +138,14 @@ h6 {
   height: 20px;
   padding: 0;
 }
+
+.btn--transparent {
+  background: none;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
 .btn:hover {
-  background: darkseagreen;
+  background: rgb(219, 92, 92);
+  cursor: pointer;
 }
 </style>
