@@ -1,7 +1,8 @@
 <template>
   <div class="product-list">
     <p v-if="term" class="hint">
-      Found {{ filteredResults.length }} results for search <em> {{ term }}</em>
+      Found {{ filteredResults.length }} results for search
+      <em> {{ term }}</em>
     </p>
     <ProductListItem
       v-for="book in filteredResults"
@@ -15,6 +16,7 @@
 import ProductListItem from "./ProductListItem.vue";
 import { EventBus } from "@/event-bus";
 import BookService from "@/services/BookService";
+
 export default {
   data() {
     return {
