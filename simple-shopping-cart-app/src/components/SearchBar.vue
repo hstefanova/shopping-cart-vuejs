@@ -4,9 +4,8 @@
       <input
         type="text"
         class="search__field"
-        v-model="searchInput"
-        @keyup.delete="search"
-        @keyup.enter="search"
+        v-model="searchValue"
+        @keyup="search"
       />
       <button @click="search" class="btn btn--transparent search__btn">
         Search
@@ -20,12 +19,12 @@ import { EventBus } from "@/event-bus";
 export default {
   data() {
     return {
-      searchInput: ""
+      searchValue: ""
     };
   },
   methods: {
     search: function() {
-      EventBus.$emit("search-term", this.searchInput);
+      EventBus.$emit("search-term", this.searchValue);
     }
   }
 };

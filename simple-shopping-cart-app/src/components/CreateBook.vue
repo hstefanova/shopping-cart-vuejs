@@ -31,11 +31,7 @@
     </form>
   </div>
 </template>
-
 <script>
-// import BookService from "@/services/BookService";
-//  import { mapStates } from "vuex";
-
 
 export default {
   data() {
@@ -44,14 +40,14 @@ export default {
       book: this.createBookObject()
     };
   },
-  // computed: {
-  //   ...mapStates(['errors'])
-  // },
+  
   methods: {
     createBook: function() {
-      //  this.$store.dispatch('createBook', this.book)
       if (this.book.title && this.book.author && this.book.price) {
-        this.$store.dispatch('createBook', this.book)
+        this.$store.dispatch('createBook', this.book).then(() => {
+        this.book = this.createBookObject()
+
+        }).catch(() => console.log("There was a problem"))
       }
       this.errors = [];
 

@@ -8,7 +8,6 @@ export default new Vuex.Store({
   state: {
     book: {},
     books: []
-    // errors: []
   },
   mutations: {
     ADD_BOOK(state, book) {
@@ -17,8 +16,9 @@ export default new Vuex.Store({
   },
   actions: {
     createBook({ commit }, book) {
-      BookService.postBook(book);
-      commit("ADD_BOOK", book);
+      return BookService.postBook(book).then(() => {
+        commit("ADD_BOOK", book);
+      });
     }
   }
 });
