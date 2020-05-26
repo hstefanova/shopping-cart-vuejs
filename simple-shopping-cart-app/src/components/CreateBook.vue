@@ -15,7 +15,7 @@
 
       <div class="form__row">
         <label class="hidden">Price:</label>
-        <input type="number" class="form__field" v-model="book.price" placeholder="Price" />
+        <input type="text" class="form__field" v-model="book.price" placeholder="Price" />
       </div>
 
       <p v-if="errors.length">
@@ -33,7 +33,9 @@
 </template>
 
 <script>
-import BookService from "@/services/BookService";
+// import BookService from "@/services/BookService";
+//  import { mapStates } from "vuex";
+
 
 export default {
   data() {
@@ -42,10 +44,14 @@ export default {
       book: this.createBookObject()
     };
   },
+  // computed: {
+  //   ...mapStates(['errors'])
+  // },
   methods: {
     createBook: function() {
+      //  this.$store.dispatch('createBook', this.book)
       if (this.book.title && this.book.author && this.book.price) {
-        BookService.postBook(this.book);
+        this.$store.dispatch('createBook', this.book)
       }
       this.errors = [];
 
@@ -62,11 +68,10 @@ export default {
       } else {
         this.book.price = parseFloat(this.book.price)
       }
-
-      
     },
     createBookObject: function() {
       const id = Math.floor(Math.random() * 100000);
+
       return {
         id: id,
         title: "",

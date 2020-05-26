@@ -1,11 +1,11 @@
 <template>
   <div class="product-list">
     <p v-if="term" class="hint">
-      Found {{ filteredResults.length }} results for search
+      Found {{ booksResult.length }} results for search
       <em> {{ term }}</em>
     </p>
     <ProductListItem
-      v-for="book in filteredResults"
+      v-for="book in booksResult"
       :book="book"
       :key="book.id"
     ></ProductListItem>
@@ -17,20 +17,23 @@ import ProductListItem from "./ProductListItem.vue";
 import { EventBus } from "@/event-bus";
 import BookService from "@/services/BookService";
 
+// import { mapState } from "vuex";
+
 export default {
   data() {
     return {
       books: [],
-      filteredResults: [],
+      booksResult: [],
       term: ""
     };
   },
   components: {
     ProductListItem
   },
+  // computed: mapState(["books", "booksResult"]),
   methods: {
     searchForMatches: function(arr, searchTerm) {
-      this.filteredResults = arr.filter(
+      this.booksResult = arr.filter(
         obj =>
           JSON.stringify(obj)
             .toLowerCase()
@@ -42,7 +45,7 @@ export default {
     BookService.getBooks()
       .then(response => {
         this.books = response.data;
-        this.filteredResults = [...this.books];
+        this.booksResult = [...this.books];
       })
       .catch(err => "There is an error: " + err.response);
 
@@ -51,6 +54,9 @@ export default {
       this.term = searchTerm;
     });
   }
+  // updated() {
+  //   this.booksResult = [...this.books];
+  // }
 };
 </script>
 
