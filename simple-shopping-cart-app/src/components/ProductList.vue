@@ -1,11 +1,11 @@
 <template>
   <div class="product-list">
-    <p v-if="searchTerm" class="hint">
-      Found {{ filteredBooks.length }} results for search
-      <em> {{ searchTerm }}</em>
+    <p v-if="term" class="hint">
+      Found {{ booksByTerm.length }} results for search
+      <em> {{ term }}</em>
     </p>
     <ProductListItem
-      v-for="book in filteredBooks"
+      v-for="book in booksByTerm"
       :book="book"
       :key="book.id"
     ></ProductListItem>
@@ -14,48 +14,22 @@
 
 <script>
 import ProductListItem from "./ProductListItem.vue";
-import { EventBus } from "@/event-bus";
-import BookService from "@/services/BookService";
+import { mapState, mapGetters } from "vuex";
 
 export default {
-  data() {
-    return {
-      books: [],
-      searchTerm: ""
-    };
-  },
   components: {
     ProductListItem
   },
-  methods: {
-    fetchBooks() {
-      BookService.getBooks()
-        .then(response => {
-          this.books = response.data;
-        })
-        .catch(err => "There is an error: " + err.response);
-    }
-  },
-  computed: {
-    filteredBooks: function() {
-      return this.books.filter(book => {
-        return (
-          JSON.stringify(book)
-            .toLowerCase()
-            .indexOf(this.searchTerm.toLowerCase()) !== -1
-        );
-      });
-    }
-  },
-  updated() {
-    this.fetchBooks();
-  },
-  created() {
-    this.fetchBooks();
 
-    EventBus.$on("search-term", searchTerm => {
-      this.searchTerm = searchTerm;
-    });
+  computed: {
+    ...mapState(["term"]),
+    ...mapGetters(["booksByTerm"])
+  },
+  // updated() {
+  //   this.$store.dispatch('fetchBooks')
+  // },
+  created() {
+    this.$store.dispatch("fetchBooks");
   }
 };
 </script>

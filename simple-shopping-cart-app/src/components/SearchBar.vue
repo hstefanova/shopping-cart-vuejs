@@ -5,9 +5,9 @@
         type="text"
         class="search__field"
         v-model="searchValue"
-        @keyup="search"
+        @keyup="searchByTerm"
       />
-      <button @click="search" class="btn btn--transparent search__btn">
+      <button @click="searchByTerm" class="btn btn--transparent search__btn">
         Search
       </button>
     </div>
@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import { EventBus } from "@/event-bus";
 export default {
   data() {
     return {
@@ -23,8 +22,8 @@ export default {
     };
   },
   methods: {
-    search: function() {
-      EventBus.$emit("search-term", this.searchValue);
+    searchByTerm: function() {
+      this.$store.dispatch("searchByTerm", this.searchValue);
     }
   }
 };

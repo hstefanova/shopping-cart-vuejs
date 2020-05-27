@@ -50,6 +50,18 @@
       "title": "23232",
       "author": "32",
       "price": 32
+    },
+    {
+      "id": 38595,
+      "title": "22test",
+      "author": "test",
+      "price": null
+    },
+    {
+      "id": 6956,
+      "title": "hr",
+      "author": "hr",
+      "price": 22
     }
   ]
 }
