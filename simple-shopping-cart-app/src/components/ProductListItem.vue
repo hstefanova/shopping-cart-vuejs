@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import { EventBus } from "@/event-bus";
-
 export default {
   props: ["book"],
   computed: {
@@ -35,7 +33,7 @@ export default {
   },
   methods: {
     addToCart: function() {
-      EventBus.$emit("add-to-cart", this.book);
+      this.$store.dispatch("addToCart", this.book);
     }
   }
 };

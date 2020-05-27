@@ -2,13 +2,13 @@
   <div class="cart__item">
     <div class="cart__item-content">
       <div class="cart__item-head">
-        <h3>{{ item.title }}</h3>
-        <h3>${{ subtotal }}</h3>
+        <h3>{{ book.title }}</h3>
+        <!-- <h3>${{ subtotal }}</h3> -->
       </div>
       <div class="cart__item-body">
-        <p>${{ price }} x {{ qty }}</p>
+        <p>${{ price }} x {{ book.qty }}</p>
         <div class="cart__item-actions">
-          <button class="btn btn--square" @click="addQtyToCart">+</button>
+          <button class="btn btn--square" @click="addToCart">+</button>
 
           <button class="btn btn--square" @click="removeFromCart">-</button>
         </div>
@@ -18,39 +18,33 @@
 </template>
 
 <script>
-import { EventBus } from "@/event-bus";
-
 export default {
-  props: ["item"],
-  data() {
-    return {
-      qty: 1
-    };
-  },
+  props: ["book"],
+  // data() {
+  //   return {
+  //     qty: 1
+  //   };
+  // },
+
   computed: {
     price: function() {
-      return this.item.price.toFixed(2);
-    },
-    subtotal: function() {
-      return (Number(this.item.price) * this.qty).toFixed(2);
+      return this.book.price.toFixed(2);
     }
+
+    // subtotal: function() {
+    //   return (Number(this.book.price) * this.qty).toFixed(2);
+    // }
   },
+
   methods: {
-    addQtyToCart: function() {
-      this.$emit("add-qty-to-cart", this.item);
-      this.qty++;
+    addToCart: function() {
+      this.$store.dispatch("addToCart", this.book);
+      // this.qty++;
     },
     removeFromCart: function() {
-      this.$emit("remove-qty-from-cart", this.item);
-      this.qty--;
+      this.$store.dispatch("removeFromCart", this.book);
+      // this.qty--;
     }
-  },
-  created() {
-    EventBus.$on("add-to-cart", book => {
-      if (book.id === this.item.id) {
-        this.qty++;
-      }
-    });
   }
 };
 </script>

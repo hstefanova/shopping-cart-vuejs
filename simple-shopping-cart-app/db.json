@@ -20,48 +20,6 @@
       "author": "Andrezej Sapkowski",
       "price": 16,
       "image": "https://images-na.ssl-images-amazon.com/images/I/91cO-IrKBpL.jpg"
-    },
-    {
-      "id": 31196,
-      "title": "test",
-      "author": "test",
-      "price": 23
-    },
-    {
-      "id": 19850,
-      "title": "test11",
-      "author": "edf",
-      "price": 23
-    },
-    {
-      "id": 67337,
-      "title": "test5",
-      "author": "4",
-      "price": "23"
-    },
-    {
-      "id": 48459,
-      "title": "test1",
-      "author": "tet1",
-      "price": 11
-    },
-    {
-      "id": 48075,
-      "title": "23232",
-      "author": "32",
-      "price": 32
-    },
-    {
-      "id": 38595,
-      "title": "22test",
-      "author": "test",
-      "price": null
-    },
-    {
-      "id": 6956,
-      "title": "hr",
-      "author": "hr",
-      "price": 22
     }
   ]
 }

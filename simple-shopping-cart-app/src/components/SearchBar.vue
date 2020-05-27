@@ -4,7 +4,7 @@
       <input
         type="text"
         class="search__field"
-        v-model="searchValue"
+        v-model="searchTerm"
         @keyup="searchByTerm"
       />
       <button @click="searchByTerm" class="btn btn--transparent search__btn">
@@ -18,12 +18,12 @@
 export default {
   data() {
     return {
-      searchValue: ""
+      searchTerm: ""
     };
   },
   methods: {
     searchByTerm: function() {
-      this.$store.dispatch("searchByTerm", this.searchValue);
+      this.$store.dispatch("searchByTerm", this.searchTerm);
     }
   }
 };

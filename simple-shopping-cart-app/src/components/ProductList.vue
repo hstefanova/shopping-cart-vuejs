@@ -1,7 +1,7 @@
 <template>
   <div class="product-list">
     <p v-if="term" class="hint">
-      Found {{ booksByTerm.length }} results for search
+      Found {{ booksByTerm.length }} results for search:
       <em> {{ term }}</em>
     </p>
     <ProductListItem
@@ -20,7 +20,6 @@ export default {
   components: {
     ProductListItem
   },
-
   computed: {
     ...mapState(["term"]),
     ...mapGetters(["booksByTerm"])
