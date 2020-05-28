@@ -21,32 +21,7 @@ export default new Vuex.Store({
       state.books.push(book);
     },
     ADD_BOOK_TO_CART(state, book) {
-      console.log("here");
-      if (state.cartBooks.length) {
-        state.cartBooks.map((cartBook, index) => {
-          if (cartBook.id === book.id) {
-            console.log("equals");
-            console.log("index", index);
-            state.cartBooks[index].qty++;
-          } else {
-            book.qty = 1;
-            state.cartBooks.push(book);
-          }
-        });
-      } else {
-        book.qty = 1;
-        state.cartBooks.push(book);
-      }
-
-      // if (state.cartBooks.includes(book.id)) {
-      //   book.qty++;
-      //   console.log("exist", book.qty);
-      // } else {
-      //   book.qty = 1;
-      //   state.cartBooks.push(book);
-      // }
-
-      // state.cartBooks.push(book);
+      state.cartBooks.push(book);
     },
     REMOVE_BOOK_FROM_CART(state, book) {
       let target = state.cartBooks.findIndex(cartBook => book === cartBook);

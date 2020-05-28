@@ -3,16 +3,13 @@
     <h1 class="cart__title">Shopping Cart</h1>
 
     <div class="cart__body">
-      <ShoppingCartItems
-        v-for="book in cartBooks"
-        :key="book.id"
-        :book="book"
-      />
+      <ShoppingCartItems v-for="(book, index) in cartUniqueBooks" :key="index" :book="book" />
     </div>
 
     <div class="cart__actions">
       <p v-if="cartBooks.length" class="cart__total">
-        Total: <strong>${{ cartTotal }}</strong>
+        Total:
+        <strong>${{ cartTotal }}</strong>
       </p>
       <p v-else>{{ cartTotal }}</p>
     </div>

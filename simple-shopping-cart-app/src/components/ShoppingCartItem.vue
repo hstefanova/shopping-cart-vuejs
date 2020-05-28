@@ -3,10 +3,10 @@
     <div class="cart__item-content">
       <div class="cart__item-head">
         <h3>{{ book.title }}</h3>
-        <!-- <h3>${{ subtotal }}</h3> -->
+        <h3>${{ subtotal }}</h3>
       </div>
       <div class="cart__item-body">
-        <p>${{ price }} x {{ book.qty }}</p>
+        <p>${{ price }} x {{ qty }}</p>
         <div class="cart__item-actions">
           <button class="btn btn--square" @click="addToCart">+</button>
 
@@ -18,25 +18,32 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   props: ["book"],
-  // data() {
-  //   return {
-  //     qty: 1
-  //   };
-  // },
-
+  data() {
+    return {
+      componentKey: 0
+    };
+  },
   computed: {
+    ...mapState(["cartBooks"]),
     price: function() {
       return this.book.price.toFixed(2);
+    },
+    qty() {
+      return this.cartBooks.filter(cartBook => cartBook.id === this.book.id)
+        .length;
+    },
+    subtotal: function() {
+      return (Number(this.book.price) * this.qty).toFixed(2);
     }
-
-    // subtotal: function() {
-    //   return (Number(this.book.price) * this.qty).toFixed(2);
-    // }
   },
 
   methods: {
+    forceRerender() {
+      this.componentKey += 1;
+    },
     addToCart: function() {
       this.$store.dispatch("addToCart", this.book);
       // this.qty++;
