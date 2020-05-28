@@ -32,6 +32,12 @@
       "title": "Test2",
       "author": "Test211",
       "price": 22.44
+    },
+    {
+      "id": 21459,
+      "title": "tset",
+      "author": "test",
+      "price": null
     }
   ]
 }
