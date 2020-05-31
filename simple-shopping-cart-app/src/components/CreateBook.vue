@@ -4,18 +4,17 @@
 
     <form action="" @submit.prevent="createBook">
       <div class="form__row">
-        <label class="hidden">Title: </label>
-        <input type="text" class="form__field" v-model="book.title" placeholder="Title"/>
+        <BaseInput v-model="book.title" type="text" placeholder="Book title"/>
       </div>
 
       <div class="form__row">
-        <label class="hidden">Author:</label>
-        <input type="text" class="form__field" v-model="book.author" placeholder="Author" />
+        <BaseInput v-model="book.author" type="text" placeholder="Author"/>
       </div>
 
       <div class="form__row">
         <label class="hidden">Price:</label>
-        <input type="text" class="form__field" v-model="book.price" placeholder="Price" />
+        <!-- <input type="text" class="form__field" v-model="book.price" placeholder="Price" /> -->
+        <BaseInput v-model="book.price" type="text" placeholder="Book Price"/>
       </div>
 
       <p v-if="errors.length">

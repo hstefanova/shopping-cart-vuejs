@@ -24,9 +24,6 @@ export default {
     ...mapState(["term"]),
     ...mapGetters(["booksByTerm"])
   },
-  // updated() {
-  //   this.$store.dispatch('fetchBooks')
-  // },
   created() {
     this.$store.dispatch("fetchBooks");
   }

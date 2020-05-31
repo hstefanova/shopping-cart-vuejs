@@ -1,16 +1,12 @@
 <template>
   <div class="search">
-    <div class="search__inner">
-      <input
-        type="text"
-        class="search__field"
-        v-model="searchTerm"
-        @keyup="searchByTerm"
-      />
-      <button @click="searchByTerm" class="btn btn--transparent search__btn">
-        Search
-      </button>
-    </div>
+    <input
+      type="text"
+      class="search__field"
+      v-model="searchTerm"
+      @keyup="searchByTerm"
+    />
+    <BaseIcon name="search" />
   </div>
 </template>
 
@@ -30,15 +26,25 @@ export default {
 </script>
 
 <style scoped>
-.search .search__inner {
-  display: flex;
-  align-items: stretch;
+.search {
+  position: relative;
+  display: inline-block;
 }
-.search .search__btn {
-  margin-left: 3px;
+.search .icon-wrapper {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  padding: 0 10px;
+  transform: translateY(-50%);
+  stroke: #000;
 }
 
 .search .search__field {
-  height: auto;
+  height: 45px;
+}
+
+.search .icon-wrapper {
+  background: #fff;
+  color: lightcoral;
 }
 </style>
