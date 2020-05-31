@@ -20,24 +20,6 @@
       "author": "Andrezej Sapkowski",
       "price": 16,
       "image": "https://images-na.ssl-images-amazon.com/images/I/91cO-IrKBpL.jpg"
-    },
-    {
-      "id": 54862,
-      "title": "New Book here",
-      "author": "Author New",
-      "price": 10.4
-    },
-    {
-      "id": 6340,
-      "title": "Test2",
-      "author": "Test211",
-      "price": 22.44
-    },
-    {
-      "id": 21459,
-      "title": "tset",
-      "author": "test",
-      "price": null
     }
   ]
 }
