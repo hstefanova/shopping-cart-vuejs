@@ -12,8 +12,6 @@
       </div>
 
       <div class="form__row">
-        <label class="hidden">Price:</label>
-        <!-- <input type="text" class="form__field" v-model="book.price" placeholder="Price" /> -->
         <BaseInput v-model="book.price" type="text" placeholder="Book Price"/>
       </div>
 
