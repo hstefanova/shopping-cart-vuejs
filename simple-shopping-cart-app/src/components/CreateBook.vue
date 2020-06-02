@@ -23,7 +23,7 @@
       </p>
 
       <div class="form__actions">
-        <button type="submit" class="btn btn--transparent form__btn">Create</button>
+        <BaseButton type="submit" btnClass="form__btn btn--transparent">Create Book</BaseButton>
       </div>
     </form>
   </div>
@@ -81,17 +81,13 @@ export default {
   width: 300px;
 }
 
-.form-create input,
-.form-create button {
-  width: 100%;
-  height: 40px;
-}
 
 .form-create .form__title {
   margin-bottom: 10px;
 }
 
 .form-create .form__btn {
+  width: 100%;
   margin-top: 15px;
 }
 .form-create .form__row + .form__row {

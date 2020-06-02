@@ -6,7 +6,7 @@ import camelCase from "lodash/camelCase";
 
 const requireComponent = require.context(
   "./components",
-  false,
+  true,
   /Base[A-Z]\w+\.(vue|js)$/
 );
 

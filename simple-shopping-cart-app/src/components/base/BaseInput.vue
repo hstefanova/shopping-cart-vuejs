@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="field">
     <label v-if="label"> {{ label }}</label>
     <input :value="value" @input="updateValue" v-bind="$attrs" />
   </div>
@@ -25,4 +25,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+.field input {
+  width: 100%;
+  height: 44px;
+}
+</style>

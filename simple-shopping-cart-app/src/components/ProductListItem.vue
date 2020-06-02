@@ -17,7 +17,7 @@
           <p class="product__price">${{ price }}</p>
         </div>
 
-        <a href="#" class="btn" @click.prevent="addToCart">Add to Cart</a>
+        <BaseButton @click.prevent="addToCart">Add to Cart</BaseButton>
       </div>
     </div>
   </div>

@@ -1,11 +1,10 @@
 <template>
   <div class="search">
-    <input
+    <BaseInput
       type="text"
-      class="search__field"
       v-model="searchTerm"
-      @keyup="searchByTerm"
-    />
+      @input="searchByTerm"
+    ></BaseInput>
     <BaseIcon name="search" />
   </div>
 </template>
@@ -28,7 +27,6 @@ export default {
 <style scoped>
 .search {
   position: relative;
-  display: inline-block;
 }
 .search .icon-wrapper {
   position: absolute;
@@ -37,10 +35,6 @@ export default {
   padding: 0 10px;
   transform: translateY(-50%);
   stroke: #000;
-}
-
-.search .search__field {
-  height: 45px;
 }
 
 .search .icon-wrapper {

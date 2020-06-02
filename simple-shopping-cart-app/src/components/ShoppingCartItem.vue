@@ -8,9 +8,11 @@
       <div class="cart__item-body">
         <p>${{ price }} x {{ qty }}</p>
         <div class="cart__item-actions">
-          <button class="btn btn--square" @click="addToCart">+</button>
+          <BaseButton btnClass="btn--square" @click="addToCart"> + </BaseButton>
 
-          <button class="btn btn--square" @click="removeFromCart">-</button>
+          <BaseButton btnClass="btn--square" @click="removeFromCart">
+            -
+          </BaseButton>
         </div>
       </div>
     </div>
@@ -46,11 +48,9 @@ export default {
     },
     addToCart: function() {
       this.$store.dispatch("addToCart", this.book);
-      // this.qty++;
     },
     removeFromCart: function() {
       this.$store.dispatch("removeFromCart", this.book);
-      // this.qty--;
     }
   }
 };
