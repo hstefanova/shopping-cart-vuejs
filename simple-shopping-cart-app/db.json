@@ -20,30 +20,6 @@
       "author": "Andrezej Sapkowski",
       "price": 16,
       "image": "https://images-na.ssl-images-amazon.com/images/I/91cO-IrKBpL.jpg"
-    },
-    {
-      "id": 10937,
-      "title": "test11",
-      "author": "test2",
-      "price": 11.12
-    },
-    {
-      "id": 84750,
-      "title": "test",
-      "author": "test",
-      "price": 11.11
-    },
-    {
-      "id": 58716,
-      "title": "hrs",
-      "author": "st",
-      "price": 11.11
-    },
-    {
-      "id": 33806,
-      "title": "test",
-      "author": "test",
-      "price": 22
     }
   ]
 }
