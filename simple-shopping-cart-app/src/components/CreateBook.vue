@@ -89,6 +89,7 @@ export default {
 .form-create .form__btn {
   width: 100%;
   margin-top: 15px;
+  height: 44px;
 }
 .form-create .form__row + .form__row {
   margin-top: 10px;
