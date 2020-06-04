@@ -5,6 +5,7 @@
         <div class="shell">
           <div class="main__cols">
             <div class="main__col">
+              <Example />
               <SearchBar />
             </div>
             <div class="main__col">
@@ -35,13 +36,15 @@ import ProductList from "./components/ProductList.vue";
 import ShoppingCart from "./components/ShoppingCart.vue";
 import SearchBar from "./components/SearchBar.vue";
 import CreateBook from "./components/CreateBook.vue";
+import Example from "./components/Example.vue";
 
 export default {
   components: {
     ProductList,
     ShoppingCart,
     SearchBar,
-    CreateBook
+    CreateBook,
+    Example
   }
 };
 </script>

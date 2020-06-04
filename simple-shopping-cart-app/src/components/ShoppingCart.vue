@@ -3,7 +3,11 @@
     <h1 class="cart__title">Shopping Cart</h1>
 
     <div class="cart__body">
-      <ShoppingCartItems v-for="(book, index) in cartUniqueBooks" :key="index" :book="book" />
+      <ShoppingCartItem
+        v-for="(book, index) in cartUniqueBooks"
+        :key="index"
+        :book="book"
+      />
     </div>
 
     <div class="cart__actions">
@@ -17,7 +21,7 @@
 </template>
 
 <script>
-import ShoppingCartItems from "./ShoppingCartItem.vue";
+import ShoppingCartItem from "./ShoppingCartItem.vue";
 import { mapState, mapGetters } from "vuex";
 
 export default {
@@ -26,7 +30,7 @@ export default {
     ...mapGetters(["cartUniqueBooks", "cartTotal"])
   },
   components: {
-    ShoppingCartItems
+    ShoppingCartItem
   }
 };
 </script>
