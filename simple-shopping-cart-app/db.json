@@ -20,6 +20,12 @@
       "author": "Andrezej Sapkowski",
       "price": 16,
       "image": "https://images-na.ssl-images-amazon.com/images/I/91cO-IrKBpL.jpg"
+    },
+    {
+      "id": 96738,
+      "title": "tetst",
+      "author": "test",
+      "price": "11"
     }
   ]
 }
