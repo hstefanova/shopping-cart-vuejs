@@ -20,6 +20,12 @@
       "author": "Andrezej Sapkowski",
       "price": 16,
       "image": "https://images-na.ssl-images-amazon.com/images/I/91cO-IrKBpL.jpg"
+    },
+    {
+      "id": 10863,
+      "title": "Harry Potter",
+      "author": "J.K.Rowling",
+      "price": "44.99"
     }
   ]
 }
