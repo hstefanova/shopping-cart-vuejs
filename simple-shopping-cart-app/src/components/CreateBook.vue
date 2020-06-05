@@ -2,7 +2,7 @@
   <div class="form-create">
     <h3 class="form__title">Add new book to store:</h3>
 
-    <form action="" @submit.prevent="createBook">
+    <form action @submit.prevent="createBook">
       <div class="form__row">
         <BaseInput
           v-model="book.title"
@@ -13,9 +13,7 @@
         />
 
         <template v-if="$v.book.title.$error">
-          <p v-if="!$v.book.title.required" class="error">
-            The book title is required
-          </p>
+          <p v-if="!$v.book.title.required" class="error">The book title is required</p>
         </template>
       </div>
 
@@ -29,9 +27,7 @@
         />
 
         <template v-if="$v.book.author.$error">
-          <p v-if="!$v.book.author.required" class="error">
-            The book author is required
-          </p>
+          <p v-if="!$v.book.author.required" class="error">The book author is required</p>
         </template>
       </div>
 
@@ -45,9 +41,7 @@
         />
 
         <template v-if="$v.book.price.$error">
-          <p v-if="!$v.book.price.required" class="error">
-            The book price is required
-          </p>
+          <p v-if="!$v.book.price.required" class="error">The book price is required</p>
 
           <p v-if="!$v.book.price.priceValidator">The price is not correct.</p>
         </template>
@@ -58,8 +52,7 @@
           type="submit"
           :disabled="$v.$anyError"
           btnClass="form__btn btn--transparent"
-          >Create Book</BaseButton
-        >
+        >Create Book</BaseButton>
 
         <p v-if="$v.$anyError">Please fill out the required field(s).</p>
       </div>
@@ -79,28 +72,14 @@ export default {
   },
   methods: {
     createBook: function() {
-      if (this.book.title && this.book.author && this.book.price) {
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
         this.$store
           .dispatch("createBook", this.book)
           .then(() => {
             this.book = this.createBookObject();
           })
           .catch(() => console.log("There was a problem"));
-      }
-      this.errors = [];
-
-      if (!this.book.title) {
-        this.errors.push("Title is required.");
-      }
-
-      if (!this.book.author) {
-        this.errors.push("Author is required.");
-      }
-
-      if (!this.book.price) {
-        this.errors.push("Please add a price.");
-      } else {
-        this.book.price = parseFloat(this.book.price);
       }
     },
     createBookObject: function() {
