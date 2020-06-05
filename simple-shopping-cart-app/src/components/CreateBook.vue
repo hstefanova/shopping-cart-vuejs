@@ -78,6 +78,7 @@ export default {
           .dispatch("createBook", this.book)
           .then(() => {
             this.book = this.createBookObject();
+            this.$v.$reset();
           })
           .catch(() => console.log("There was a problem"));
       }
