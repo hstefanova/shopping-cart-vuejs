@@ -1,14 +1,17 @@
 <template>
-  <div class="product-list">
+  <div class="products">
     <p v-if="term" class="hint">
       Found {{ booksByTerm.length }} results for search:
       <em> {{ term }}</em>
     </p>
-    <ProductListItem
-      v-for="book in booksByTerm"
-      :book="book"
-      :key="book.id"
-    ></ProductListItem>
+
+    <div class="products__inner">
+      <ProductListItem
+        v-for="book in booksByTerm"
+        :book="book"
+        :key="book.id"
+      ></ProductListItem>
+    </div>
   </div>
 </template>
 
@@ -31,7 +34,28 @@ export default {
 </script>
 
 <style scoped>
-.hint {
-  padding: 14px 0;
+.products {
+  position: relative;
+  padding: 60px 0;
+}
+
+.products .hint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 0;
+}
+
+.products .products__inner {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: -20px;
+}
+.products .product {
+  flex-basis: calc(33.33% - 40px);
+  align-self: stretch;
+  min-height: 260px;
+  margin: 20px;
 }
 </style>

@@ -79,10 +79,6 @@ export default {
   padding: 10px 0;
 }
 
-.product + .product {
-  margin-top: 20px;
-}
-
 .product .product__image {
   display: inline-block;
   width: 130px;
