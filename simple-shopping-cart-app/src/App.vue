@@ -29,7 +29,7 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss">
 * {
   padding: 0;
   margin: 0;
@@ -38,6 +38,7 @@ export default {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 body {
@@ -57,16 +58,16 @@ h6 {
 }
 
 input {
-  min-width: 270px;
-  min-height: 30px;
+  width: 100%;
+  height: 30px;
   border: 0;
   border-radius: 2px;
   padding: 5px 10px;
-}
 
-input:focus {
-  outline: none;
-  box-shadow: 0 0 5px 2px rgb(219, 92, 92);
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgb(219, 92, 92);
+  }
 }
 
 .hidden {
@@ -84,16 +85,17 @@ input:focus {
   background: #000;
   padding: 25px 0;
   color: #fff;
-}
-.header .header__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.header .header__aside,
-.header .search,
-.header .nav {
-  flex-basis: 33.33%;
+  .header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__aside,
+  .search,
+  .nav {
+    flex-basis: 33.33%;
+  }
 }
 </style>

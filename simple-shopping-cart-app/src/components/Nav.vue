@@ -4,11 +4,7 @@
       <li>
         <router-link to="/"> Home </router-link>
       </li>
-      <li>
-        <router-link :to="{ name: 'product-info' }">
-          Book Info
-        </router-link>
-      </li>
+
       <li>
         <router-link :to="{ name: 'product-create' }">
           Book Create
@@ -31,21 +27,35 @@
 export default {};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .nav {
   color: #fff;
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+  }
+
+  li + li {
+    margin-left: 10px;
+  }
+
+  a {
+    color: inherit;
+  }
 }
 
-.nav ul {
-  display: flex;
-  justify-content: flex-end;
-  list-style: none;
-}
+// .nav ul {
+//   display: flex;
+//   justify-content: flex-end;
+//   list-style: none;
+// }
 
-.nav li + li {
-  margin-left: 10px;
-}
-.nav a {
-  color: inherit;
-}
+// .nav li + li {
+//   margin-left: 10px;
+// }
+// .nav a {
+//   color: inherit;
+// }
 </style>

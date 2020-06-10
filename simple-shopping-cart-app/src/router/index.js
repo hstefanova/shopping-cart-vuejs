@@ -10,6 +10,7 @@ import Login from "@/views/Login";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -17,9 +18,10 @@ export default new Router({
       component: Home
     },
     {
-      path: "/product-info",
+      path: "/product-info/:id",
       name: "product-info",
-      component: ProductShow
+      component: ProductShow,
+      props: true
     },
     {
       path: "/product-create",

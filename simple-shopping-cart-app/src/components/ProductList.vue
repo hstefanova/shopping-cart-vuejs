@@ -33,29 +33,30 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .products {
   position: relative;
   padding: 60px 0;
-}
 
-.products .hint {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 20px 0;
-}
+  .hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+  }
 
-.products .products__inner {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin: -20px;
-}
-.products .product {
-  flex-basis: calc(33.33% - 40px);
-  align-self: stretch;
-  min-height: 260px;
-  margin: 20px;
+  .products__inner {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: -10px;
+  }
+
+  .product {
+    flex-basis: calc(25% - 20px);
+    align-self: stretch;
+    min-height: 260px;
+    margin: 10px;
+  }
 }
 </style>

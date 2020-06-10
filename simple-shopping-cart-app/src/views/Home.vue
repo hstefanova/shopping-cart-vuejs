@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="shell">
     <div class="main__body">
-      <div class="shell">
+      <div class="main__inner">
+        <Sidebar />
+
         <ProductList />
       </div>
     </div>
@@ -10,11 +12,29 @@
 
 <script>
 import ProductList from "@/components/ProductList";
+import Sidebar from "@/components/Sidebar";
 export default {
   components: {
-    ProductList
+    ProductList,
+    Sidebar
   }
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.main {
+  .main__inner {
+    display: flex;
+    margin: 0 -15px;
+  }
+
+  .sidebar {
+    width: 30%;
+    margin: 0 15px;
+  }
+  .products {
+    width: 70%;
+    margin: 0 15px;
+  }
+}
+</style>
