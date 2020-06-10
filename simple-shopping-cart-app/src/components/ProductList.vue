@@ -1,10 +1,5 @@
 <template>
   <div class="products">
-    <p v-if="term" class="hint">
-      Found {{ booksByTerm.length }} results for search:
-      <em> {{ term }}</em>
-    </p>
-
     <div class="products__inner">
       <ProductListItem
         v-for="book in booksByTerm"
@@ -17,14 +12,13 @@
 
 <script>
 import ProductListItem from "./ProductListItem.vue";
-import { mapState, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
     ProductListItem
   },
   computed: {
-    ...mapState(["term"]),
     ...mapGetters(["booksByTerm"])
   },
   created() {
@@ -36,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .products {
   position: relative;
-  padding: 60px 0;
+  // padding: 60px 0;
 
   .hint {
     position: absolute;

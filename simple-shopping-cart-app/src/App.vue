@@ -7,8 +7,6 @@
             <a href="#" class="logo">Logo</a>
           </aside>
 
-          <SearchBar />
-
           <Nav />
         </div>
       </div>
@@ -20,11 +18,9 @@
   </div>
 </template>
 <script>
-import SearchBar from "@/components/SearchBar";
 import Nav from "@/components/Nav";
 export default {
   components: {
-    SearchBar,
     Nav
   }
 };
@@ -90,12 +86,6 @@ input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .header__aside,
-  .search,
-  .nav {
-    flex-basis: 33.33%;
   }
 }
 </style>
