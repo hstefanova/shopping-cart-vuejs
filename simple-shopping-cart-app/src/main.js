@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import store from "./store";
 import router from "./router";
+import firebase from "firebase";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 import Vuelidate from "vuelidate";
@@ -31,8 +32,24 @@ requireComponent.keys().forEach(fileName => {
 
 Vue.config.productionTip = false;
 
-new Vue({
-  store,
-  router,
-  render: h => h(App)
-}).$mount("#app");
+let app = "";
+
+firebase.initializeApp({
+  apiKey: "AIzaSyDdrV2GtOZrMQU0E6B5MOHA8zBzrNRQ5k8",
+  authDomain: "shopping-cart-app-839d6.firebaseapp.com",
+  databaseURL: "https://shopping-cart-app-839d6.firebaseio.com",
+  projectId: "shopping-cart-app-839d6",
+  storageBucket: "shopping-cart-app-839d6.appspot.com",
+  messagingSenderId: "296033088567",
+  appId: "1:296033088567:web:9046db2236da052f497bb2"
+});
+
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      store,
+      router,
+      render: h => h(App)
+    }).$mount("#app");
+  }
+});

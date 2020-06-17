@@ -65,11 +65,14 @@
         <p v-if="$v.$anyError">Please fill out the required field(s).</p>
       </div>
     </form>
+
+    <button @click="logout">Logout</button>
   </div>
 </template>
 <script>
 import { required } from "vuelidate/lib/validators";
 import { priceValidator } from "../validator/price";
+import firebase from "firebase";
 
 export default {
   data() {
@@ -100,6 +103,14 @@ export default {
         author: "",
         price: ""
       };
+    },
+    logout: function() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace("login");
+        });
     }
   },
   validations: {

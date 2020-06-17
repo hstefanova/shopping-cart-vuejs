@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Sign In:</h2>
+    <h2>Create a new account:</h2>
     <div class="form">
       <div class="form__row">
         <BaseInput
@@ -21,10 +21,10 @@
       </div>
 
       <div class="form__actions">
-        <BaseButton @click="login">Sign In</BaseButton>
+        <BaseButton @click="register">Sign Up</BaseButton>
         <p>
-          You don't have an account? Create one
-          <router-link :to="{ name: 'register' }"> here </router-link>
+          You've already had an account? Sign in
+          <router-link :to="{ name: 'login' }"> here </router-link>
         </p>
       </div>
     </div>
@@ -40,24 +40,20 @@ export default {
       password: ""
     };
   },
-
   methods: {
-    login() {
+    register() {
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
         .then(
-          () => {
-            this.$router.replace("product-create");
+          function(user) {
+            alert("Your account has been created!" + user);
           },
-          err => {
+          function(err) {
             alert("Oops, " + err.message);
           }
         );
     }
-    // login: function() {
-    //   this.$router.replace("product-create");
-    // }
   }
 };
 </script>

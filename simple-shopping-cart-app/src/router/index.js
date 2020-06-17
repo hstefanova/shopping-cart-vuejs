@@ -6,10 +6,12 @@ import ShoppingCart from "@/views/ShoppingCart";
 import UserFavorites from "@/views/UserFavorites";
 import ProductCreate from "@/views/ProductCreate";
 import Login from "@/views/Login";
+import Register from "@/views/Register";
+import firebase from "firebase";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   routes: [
     {
@@ -26,12 +28,18 @@ export default new Router({
     {
       path: "/product-create",
       name: "product-create",
-      component: ProductCreate
+      component: ProductCreate,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/cart",
       name: "cart",
-      component: ShoppingCart
+      component: ShoppingCart,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/favs",
@@ -42,6 +50,22 @@ export default new Router({
       path: "/login",
       name: "login",
       component: Login
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: Register
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  const currentUser = firebase.auth().currentUser;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  if (!currentUser && requiresAuth) next("login");
+  else if (currentUser && !requiresAuth) next("product-create");
+  else next();
+});
+
+export default router;
