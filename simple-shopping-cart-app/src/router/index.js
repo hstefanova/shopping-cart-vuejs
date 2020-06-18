@@ -36,10 +36,7 @@ const router = new Router({
     {
       path: "/cart",
       name: "cart",
-      component: ShoppingCart,
-      meta: {
-        requiresAuth: true
-      }
+      component: ShoppingCart
     },
     {
       path: "/favs",

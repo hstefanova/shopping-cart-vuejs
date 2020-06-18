@@ -66,6 +66,8 @@
       </div>
     </form>
 
+    <p v-if="!loggedIn">the user is <strong>LOGGED IN</strong>!</p>
+
     <button @click="logout">Logout</button>
   </div>
 </template>
@@ -73,6 +75,7 @@
 import { required } from "vuelidate/lib/validators";
 import { priceValidator } from "../validator/price";
 import firebase from "firebase";
+import { authCompleted } from "../store/helpers";
 
 export default {
   data() {
@@ -112,6 +115,9 @@ export default {
           this.$router.replace("login");
         });
     }
+  },
+  computed: {
+    ...authCompleted
   },
   validations: {
     book: {

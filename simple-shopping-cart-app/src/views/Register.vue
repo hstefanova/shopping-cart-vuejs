@@ -23,8 +23,10 @@
       <div class="form__actions">
         <BaseButton @click="register">Sign Up</BaseButton>
         <p>
-          You've already had an account? Sign in
-          <router-link :to="{ name: 'login' }"> here </router-link>
+          You have an account?
+          <router-link :to="{ name: 'login' }">
+            Login
+          </router-link>
         </p>
       </div>
     </div>

@@ -17,17 +17,35 @@
         <router-link :to="{ name: 'favs' }"> Favs </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'login' }"> Login </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'register' }"> Register </router-link>
+        <router-link :to="{ name: 'login' }" class="btn">
+          Login
+        </router-link>
+
+        <button @click="logout" type="button">Logout</button>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-export default {};
+import { authCompleted } from "../store/index";
+import firebase from "firebase";
+
+export default {
+  methods: {
+    logout: function() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace("login");
+        });
+    }
+  },
+  computed: {
+    ...authCompleted
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -47,6 +65,10 @@ export default {};
   a {
     color: inherit;
   }
+}
+
+.btn {
+  background: green;
 }
 
 // .nav ul {

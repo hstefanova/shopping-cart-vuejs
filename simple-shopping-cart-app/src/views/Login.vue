@@ -23,8 +23,8 @@
       <div class="form__actions">
         <BaseButton @click="login">Sign In</BaseButton>
         <p>
-          You don't have an account? Create one
-          <router-link :to="{ name: 'register' }"> here </router-link>
+          You don't have an account?
+          <router-link :to="{ name: 'register' }"> Register </router-link>
         </p>
       </div>
     </div>
@@ -48,7 +48,7 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           () => {
-            this.$router.replace("product-create");
+            this.$router.push({ name: "product-create" });
           },
           err => {
             alert("Oops, " + err.message);
