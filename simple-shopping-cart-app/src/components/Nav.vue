@@ -6,29 +6,29 @@
       </li>
 
       <li>
-        <router-link :to="{ name: 'product-create' }">
-          Book Create
-        </router-link>
-      </li>
-      <li>
         <router-link :to="{ name: 'cart' }"> Cart </router-link>
       </li>
       <li>
         <router-link :to="{ name: 'favs' }"> Favs </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'login' }" class="btn">
+        <router-link v-if="loggedIn" :to="{ name: 'product-create' }">
+          Book Create
+        </router-link>
+      </li>
+      <li>
+        <router-link :to="{ name: 'login' }" class="btn" v-if="!loggedIn">
           Login
         </router-link>
 
-        <button @click="logout" type="button">Logout</button>
+        <button v-if="loggedIn" @click="logout" type="button">Logout</button>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-import { authCompleted } from "../store/index";
+import { authCompleted } from "../store/helpers";
 import firebase from "firebase";
 
 export default {
@@ -38,7 +38,8 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.replace("login");
+          location.reload();
+          this.$router.push({ name: "home" });
         });
     }
   },

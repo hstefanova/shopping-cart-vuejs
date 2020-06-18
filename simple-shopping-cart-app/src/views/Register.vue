@@ -38,15 +38,17 @@ import firebase from "firebase";
 export default {
   data() {
     return {
-      email: "",
-      password: ""
+      user: {
+        email: "",
+        password: ""
+      }
     };
   },
   methods: {
     register() {
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
+        .createUserWithEmailAndPassword(this.user.email, this.user.password)
         .then(
           function(user) {
             alert("Your account has been created!" + user);

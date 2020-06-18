@@ -5,7 +5,7 @@
       <div class="form__row">
         <BaseInput
           label="Enter your email:"
-          v-model="email"
+          v-model="user.email"
           type="email"
           placeholder="Email..."
         />
@@ -14,7 +14,7 @@
       <div class="form__row">
         <BaseInput
           label="Enter your password:"
-          v-model="password"
+          v-model="user.password"
           type="password"
           placeholder="Password..."
         />
@@ -36,8 +36,10 @@ import firebase from "firebase";
 export default {
   data() {
     return {
-      email: "",
-      password: ""
+      user: {
+        email: "",
+        password: ""
+      }
     };
   },
 
@@ -45,19 +47,18 @@ export default {
     login() {
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
+        .signInWithEmailAndPassword(this.user.email, this.user.password)
         .then(
           () => {
-            this.$router.push({ name: "product-create" });
+            this.$router.push({ name: "home" });
+            location.reload();
           },
           err => {
+            console.log(err);
             alert("Oops, " + err.message);
           }
         );
     }
-    // login: function() {
-    //   this.$router.replace("product-create");
-    // }
   }
 };
 </script>

@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     books: [],
     term: "",
-    cartBooks: []
+    cartBooks: [],
+    isLoggedIn: false
   },
   mutations: {
     SET_BOOKS(state, books) {
@@ -77,8 +78,7 @@ export default new Vuex.Store({
         return "No books in the cart";
       }
     },
-    // authentication
-    loggedIn: () => {
+    LoggedIn: () => {
       return !!firebase.auth().currentUser;
     }
   }
