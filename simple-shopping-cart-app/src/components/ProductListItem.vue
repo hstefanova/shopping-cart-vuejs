@@ -28,7 +28,7 @@ export default {
   props: ["book"],
   computed: {
     price: function() {
-      return this.book.price.toFixed(2);
+      return parseFloat(this.book.price).toFixed(2);
     }
   },
   methods: {

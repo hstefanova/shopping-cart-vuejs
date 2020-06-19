@@ -2,33 +2,66 @@
   <div class="form-create">
     <h3 class="form__title">Add new book to store:</h3>
 
-    <form action="" @submit.prevent="createBook">
+    <form action @submit.prevent="createBook">
       <div class="form__row">
-        <BaseInput v-model="book.title" type="text" placeholder="Book title"/>
+        <BaseInput
+          v-model="book.title"
+          type="text"
+          placeholder="Book title"
+          :class="{ error: $v.book.title.$error }"
+          @blur="$v.book.title.$touch()"
+        />
+
+        <template v-if="$v.book.title.$error">
+          <p v-if="!$v.book.title.required" class="error">The book title is required</p>
+        </template>
       </div>
 
       <div class="form__row">
-        <BaseInput v-model="book.author" type="text" placeholder="Author"/>
+        <BaseInput
+          v-model="book.author"
+          type="text"
+          placeholder="Author"
+          :class="{ error: $v.book.author.$error }"
+          @blur="$v.book.author.$touch()"
+        />
+
+        <template v-if="$v.book.author.$error">
+          <p v-if="!$v.book.author.required" class="error">The book author is required</p>
+        </template>
       </div>
 
       <div class="form__row">
-        <BaseInput v-model="book.price" type="text" placeholder="Book Price"/>
-      </div>
+        <BaseInput
+          v-model="book.price"
+          type="text"
+          placeholder="Book Price"
+          :class="{ error: $v.book.price.$error }"
+          @blur="$v.book.price.$touch()"
+        />
 
-      <p v-if="errors.length">
-        <strong>Please correct the following error(s):</strong>
-        <ul>
-          <li v-for="error in errors" :key="error">{{ error }}</li>
-        </ul>
-      </p>
+        <template v-if="$v.book.price.$error">
+          <p v-if="!$v.book.price.required" class="error">The book price is required</p>
+
+          <p v-if="!$v.book.price.priceValidator">The price is not correct.</p>
+        </template>
+      </div>
 
       <div class="form__actions">
-        <BaseButton type="submit" btnClass="form__btn btn--transparent">Create Book</BaseButton>
+        <BaseButton
+          type="submit"
+          :disabled="$v.$anyError"
+          btnClass="form__btn btn--transparent"
+        >Create Book</BaseButton>
+
+        <p v-if="$v.$anyError">Please fill out the required field(s).</p>
       </div>
     </form>
   </div>
 </template>
 <script>
+import { required } from "vuelidate/lib/validators";
+import { priceValidator } from "../validator/price";
 
 export default {
   data() {
@@ -37,29 +70,17 @@ export default {
       book: this.createBookObject()
     };
   },
-  
   methods: {
     createBook: function() {
-      if (this.book.title && this.book.author && this.book.price) {
-        this.$store.dispatch('createBook', this.book).then(() => {
-        this.book = this.createBookObject()
-
-        }).catch(() => console.log("There was a problem"))
-      }
-      this.errors = [];
-
-      if (!this.book.title) {
-        this.errors.push("Title is required.");
-      }
-
-      if (!this.book.author) {
-        this.errors.push("Author is required.");
-      }
-
-      if (!this.book.price) {
-        this.errors.push("Please add a price.");
-      } else {
-        this.book.price = parseFloat(this.book.price)
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        this.$store
+          .dispatch("createBook", this.book)
+          .then(() => {
+            this.book = this.createBookObject();
+            this.$v.$reset();
+          })
+          .catch(() => console.log("There was a problem"));
       }
     },
     createBookObject: function() {
@@ -72,15 +93,28 @@ export default {
         price: ""
       };
     }
+  },
+  validations: {
+    book: {
+      title: { required },
+      author: { required },
+      price: {
+        required,
+        priceValidator
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
+.error {
+  color: blue;
+  font-weight: bold;
+}
 .form-create {
   width: 300px;
 }
-
 
 .form-create .form__title {
   margin-bottom: 10px;

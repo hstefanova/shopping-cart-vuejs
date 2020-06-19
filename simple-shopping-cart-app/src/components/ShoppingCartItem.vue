@@ -31,7 +31,7 @@ export default {
   computed: {
     ...mapState(["cartBooks"]),
     price: function() {
-      return this.book.price.toFixed(2);
+      return parseFloat(this.book.price).toFixed(2);
     },
     qty() {
       return this.cartBooks.filter(cartBook => cartBook.id === this.book.id)

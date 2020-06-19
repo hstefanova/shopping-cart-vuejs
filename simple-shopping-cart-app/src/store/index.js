@@ -69,7 +69,7 @@ export default new Vuex.Store({
     cartTotal: state => {
       if (state.cartBooks.length) {
         return state.cartBooks
-          .map(book => book.price)
+          .map(book => parseFloat(book.price))
           .reduce((acc, curr) => acc + curr)
           .toFixed(2);
       } else {

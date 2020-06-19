@@ -3,6 +3,9 @@ import App from "./App.vue";
 import store from "./store";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
+import Vuelidate from "vuelidate";
+
+Vue.use(Vuelidate);
 
 const requireComponent = require.context(
   "./components/base",
