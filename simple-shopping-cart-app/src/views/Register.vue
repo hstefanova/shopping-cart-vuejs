@@ -4,7 +4,14 @@
     <div class="form">
       <div class="form__row">
         <BaseInput
-          label="Enter your email:"
+          label="Enter username:"
+          v-model="name"
+          type="text"
+          placeholder="Name..."
+        />
+
+        <BaseInput
+          label="Enter email:"
           v-model="email"
           type="email"
           placeholder="Email..."
@@ -13,7 +20,7 @@
 
       <div class="form__row">
         <BaseInput
-          label="Enter your password:"
+          label="Enter password:"
           v-model="password"
           type="password"
           placeholder="Password..."
@@ -39,6 +46,7 @@ export default {
   data() {
     return {
       user: {
+        name: "",
         email: "",
         password: ""
       }

@@ -24,7 +24,7 @@
         <BaseButton @click="login">Sign In</BaseButton>
         <p>
           You don't have an account?
-          <router-link :to="{ name: 'register' }"> Register </router-link>
+          <router-link :to="{ name: 'register' }">Register</router-link>
         </p>
       </div>
     </div>
@@ -33,6 +33,7 @@
 
 <script>
 import firebase from "firebase";
+
 export default {
   data() {
     return {
