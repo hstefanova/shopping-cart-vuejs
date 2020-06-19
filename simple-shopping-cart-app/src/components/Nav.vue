@@ -12,12 +12,11 @@
         <router-link :to="{ name: 'favs' }"> Favs </router-link>
       </li>
       <li class="red">
-        <router-link :to="{ name: 'product-create' }">
-          Book Create
+        <router-link :to="{ name: 'product-create' }" v-if="loggedIn">
+          Add New Book
         </router-link>
       </li>
       <li>
-        <span>{{ loggedIn }}</span>
         <router-link :to="{ name: 'login' }" class="btn" v-if="!loggedIn">
           Login
         </router-link>
@@ -71,8 +70,12 @@ export default {
     list-style: none;
   }
 
-  li + li {
-    margin-left: 10px;
+  li {
+    align-self: center;
+
+    & + li {
+      margin-left: 10px;
+    }
   }
 
   a {
