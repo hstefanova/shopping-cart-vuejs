@@ -19,7 +19,8 @@
 
           <div class="product__actions">
             <BaseButton @click.prevent="addToCart">Add to Cart</BaseButton>
-            <BaseButton btnClass="btn--transparent">
+
+            <BaseButton btnClass="btn--transparent" @click.prevent="addToFavs">
               <BaseIcon name="heart" />
             </BaseButton>
           </div>
@@ -40,6 +41,9 @@ export default {
   methods: {
     addToCart: function() {
       this.$store.dispatch("addToCart", this.book);
+    },
+    addToFavs: function() {
+      this.$store.dispatch("addToFavs", this.book);
     }
   }
 };

@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import BookService from "@/services/BookService";
-// import firebase from "firebase";
 
 Vue.use(Vuex);
 
@@ -9,7 +8,8 @@ export default new Vuex.Store({
   state: {
     books: [],
     term: "",
-    cartBooks: []
+    cartBooks: [],
+    favBooks: []
   },
   mutations: {
     SET_BOOKS(state, books) {
@@ -18,8 +18,12 @@ export default new Vuex.Store({
     SET_TERM(state, term) {
       state.term = term;
     },
+
     ADD_CREATED_BOOK(state, book) {
       state.books.push(book);
+    },
+    ADD_TO_FAVS(state, book) {
+      state.favBooks.push(book);
     },
     ADD_BOOK_TO_CART(state, book) {
       state.cartBooks.push(book);
@@ -44,6 +48,9 @@ export default new Vuex.Store({
       return BookService.postBook(book).then(() => {
         commit("ADD_CREATED_BOOK", book);
       });
+    },
+    addToFavs({ commit }, book) {
+      commit("ADD_TO_FAVS", book);
     },
     addToCart({ commit }, book) {
       commit("ADD_BOOK_TO_CART", book);
