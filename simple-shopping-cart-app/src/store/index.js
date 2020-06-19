@@ -18,12 +18,15 @@ export default new Vuex.Store({
     SET_TERM(state, term) {
       state.term = term;
     },
-
     ADD_CREATED_BOOK(state, book) {
       state.books.push(book);
     },
     ADD_TO_FAVS(state, book) {
       state.favBooks.push(book);
+    },
+    REMOVE_FROM_FAVS(state, book) {
+      let target = state.favBooks.findIndex(favBook => book === favBook);
+      state.favBooks.splice(target, 1);
     },
     ADD_BOOK_TO_CART(state, book) {
       state.cartBooks.push(book);
@@ -57,6 +60,9 @@ export default new Vuex.Store({
     },
     removeFromCart({ commit }, book) {
       commit("REMOVE_BOOK_FROM_CART", book);
+    },
+    removeFromFavs({ commit }, book) {
+      commit("REMOVE_FROM_FAVS", book);
     }
   },
   getters: {

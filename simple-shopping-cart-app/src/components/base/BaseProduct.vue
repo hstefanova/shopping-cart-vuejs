@@ -20,8 +20,20 @@
           <div class="product__actions">
             <BaseButton @click.prevent="addToCart">Add to Cart</BaseButton>
 
-            <BaseButton btnClass="btn--transparent" @click.prevent="addToFavs">
+            <BaseButton
+              v-if="!addRemoveBtn"
+              btnClass="btn--transparent"
+              @click.prevent="addToFavs"
+            >
               <BaseIcon name="heart" />
+            </BaseButton>
+
+            <BaseButton
+              v-if="addRemoveBtn"
+              btnClass="btn--transparent"
+              @click.prevent="removeFromFavs"
+            >
+              <BaseIcon name="x" />
             </BaseButton>
           </div>
         </div>
@@ -32,7 +44,7 @@
 
 <script>
 export default {
-  props: ["book"],
+  props: ["book", "addRemoveBtn"],
   computed: {
     price: function() {
       return parseFloat(this.book.price).toFixed(2);
@@ -44,6 +56,9 @@ export default {
     },
     addToFavs: function() {
       this.$store.dispatch("addToFavs", this.book);
+    },
+    removeFromFavs: function() {
+      this.$store.dispatch("removeFromFavs", this.book);
     }
   }
 };
