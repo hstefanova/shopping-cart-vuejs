@@ -3,11 +3,12 @@
     <div class="shell">
       <div class="products">
         <div class="products__inner">
-          <ProductListItem
+          <BaseProduct
             v-for="book in favBooks"
             :book="book"
+            :addRemoveBtn="true"
             :key="book.id"
-          ></ProductListItem>
+          />
         </div>
       </div>
     </div>
@@ -15,15 +16,11 @@
 </template>
 
 <script>
-import ProductListItem from "../components/ProductListItem";
 import { mapState } from "vuex";
 
 export default {
   computed: {
     ...mapState(["favBooks"])
-  },
-  components: {
-    ProductListItem
   }
 };
 </script>

@@ -1,23 +1,19 @@
 <template>
   <div class="products">
     <div class="products__inner">
-      <ProductListItem
+      <BaseProduct
         v-for="book in booksByTerm"
         :book="book"
         :key="book.id"
-      ></ProductListItem>
+      ></BaseProduct>
     </div>
   </div>
 </template>
 
 <script>
-import ProductListItem from "./ProductListItem.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  components: {
-    ProductListItem
-  },
   computed: {
     ...mapGetters(["booksByTerm"])
   },
