@@ -13,7 +13,9 @@
         />
 
         <template v-if="$v.book.title.$error">
-          <p v-if="!$v.book.title.required" class="error">The book title is required</p>
+          <p v-if="!$v.book.title.required" class="error">
+            The book title is required
+          </p>
         </template>
       </div>
 
@@ -27,7 +29,9 @@
         />
 
         <template v-if="$v.book.author.$error">
-          <p v-if="!$v.book.author.required" class="error">The book author is required</p>
+          <p v-if="!$v.book.author.required" class="error">
+            The book author is required
+          </p>
         </template>
       </div>
 
@@ -41,7 +45,9 @@
         />
 
         <template v-if="$v.book.price.$error">
-          <p v-if="!$v.book.price.required" class="error">The book price is required</p>
+          <p v-if="!$v.book.price.required" class="error">
+            The book price is required
+          </p>
 
           <p v-if="!$v.book.price.priceValidator">The price is not correct.</p>
         </template>
@@ -52,7 +58,9 @@
           type="submit"
           :disabled="$v.$anyError"
           btnClass="form__btn btn--transparent"
-        >Create Book</BaseButton>
+        >
+          Create Book
+        </BaseButton>
 
         <p v-if="$v.$anyError">Please fill out the required field(s).</p>
       </div>
