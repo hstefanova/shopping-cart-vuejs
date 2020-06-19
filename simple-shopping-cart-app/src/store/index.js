@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import BookService from "@/services/BookService";
+// import firebase from "firebase";
 
 Vue.use(Vuex);
 
@@ -76,5 +77,8 @@ export default new Vuex.Store({
         return "No books in the cart";
       }
     }
+    // loggedIn: () => {
+    //   return !firebase.auth().currentUser;
+    // }
   }
 });

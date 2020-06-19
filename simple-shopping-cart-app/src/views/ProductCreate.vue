@@ -54,11 +54,7 @@
       </div>
 
       <div class="form__actions">
-        <BaseButton
-          type="submit"
-          :disabled="$v.$anyError"
-          btnClass="form__btn btn--transparent"
-        >
+        <BaseButton type="submit" :disabled="$v.$anyError" btnClass="form__btn">
           Create Book
         </BaseButton>
 
@@ -102,6 +98,7 @@ export default {
       };
     }
   },
+
   validations: {
     book: {
       title: { required },

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="shell">
     User favorite products
   </div>
 </template>

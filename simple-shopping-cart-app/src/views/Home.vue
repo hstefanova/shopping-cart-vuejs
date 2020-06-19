@@ -2,7 +2,6 @@
   <div class="shell">
     <div class="main__body">
       <SearchBar />
-
       <div class="main__inner">
         <Sidebar />
 
