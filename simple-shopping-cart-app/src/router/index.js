@@ -7,7 +7,8 @@ import UserFavorites from "@/views/UserFavorites";
 import ProductCreate from "@/views/ProductCreate";
 import Login from "@/views/Login";
 import Register from "@/views/Register";
-// import firebase from "firebase";
+import * as firebase from "firebase";
+import "firebase/auth";
 
 Vue.use(Router);
 
@@ -56,14 +57,16 @@ const router = new Router({
   ]
 });
 
-// router.beforeEach((to, from, next) => {
-//   const currentUser = !!firebase.auth().currentUser;
-//   console.log("currentUser: ", currentUser);
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!firebase.auth().currentUser;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-//   if (to.matched.some(record => record.meta.requiresAuth) && !currentUser) {
-//     next("/login");
-//   }
-//   next();
-// });
+  console.log("isAuthenticated: ", isAuthenticated);
+
+  if (requiresAuth && !isAuthenticated) {
+    next("/login");
+  }
+  next();
+});
 
 export default router;

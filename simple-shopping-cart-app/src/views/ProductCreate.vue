@@ -54,21 +54,13 @@
       </div>
 
       <div class="form__actions">
-        <BaseButton
-          type="submit"
-          :disabled="$v.$anyError"
-          btnClass="form__btn btn--transparent"
-        >
+        <BaseButton type="submit" :disabled="$v.$anyError" btnClass="form__btn">
           Create Book
         </BaseButton>
 
         <p v-if="$v.$anyError">Please fill out the required field(s).</p>
       </div>
     </form>
-
-    <p v-if="!loggedIn">the user is <strong>LOGGED IN</strong>!</p>
-
-    <button @click="logout">Logout</button>
   </div>
 </template>
 <script>

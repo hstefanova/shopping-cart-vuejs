@@ -1,8 +1,6 @@
 <template>
   <div class="shell">
     User favorite products
-
-    <p>LoggedIn: {{ loggedIn }}</p>
   </div>
 </template>
 

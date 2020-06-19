@@ -17,35 +17,47 @@
         </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'login' }" class="btn">
+        <span>{{ loggedIn }}</span>
+        <router-link :to="{ name: 'login' }" class="btn" v-if="!loggedIn">
           Login
         </router-link>
 
-        <button type="button">Logout</button>
+        <div v-else>
+          <button type="button" class="btn btn--red" @click="logout">
+            Logout
+          </button>
+        </div>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-// import { authCompleted } from "../store/helpers";
-// import firebase from "firebase";
+import * as firebase from "firebase";
+import "firebase/auth";
 
 export default {
+  data() {
+    return {
+      loggedIn: false
+    };
+  },
   methods: {
-    // logout: function() {
-    //   firebase
-    //     .auth()
-    //     .signOut()
-    //     .then(() => {
-    //       location.reload();
-    //       this.$router.push({ name: "home" });
-    //     });
-    // }
+    logout: function() {
+      firebase
+        .auth()
+        .signOut()
+        .then(data => {
+          console.log("Data:", data);
+          this.$router.replace({ name: "home" });
+        });
+    }
+  },
+  created() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.loggedIn = !!user;
+    });
   }
-  // computed: {
-  //   ...authCompleted
-  // }
 };
 </script>
 
@@ -66,26 +78,17 @@ export default {
   a {
     color: inherit;
   }
+}
 
-  // .red a {
-  //   color: lightgreen;
-  // }
+.red {
+  color: lightgreen;
 }
 
 .btn {
   background: green;
 }
 
-// .nav ul {
-//   display: flex;
-//   justify-content: flex-end;
-//   list-style: none;
-// }
-
-// .nav li + li {
-//   margin-left: 10px;
-// }
-// .nav a {
-//   color: inherit;
-// }
+.btn--red {
+  background: red;
+}
 </style>
