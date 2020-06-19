@@ -67,9 +67,9 @@ export default {
     color: inherit;
   }
 
-  .red a {
-    color: lightgreen;
-  }
+  // .red a {
+  //   color: lightgreen;
+  // }
 }
 
 .btn {

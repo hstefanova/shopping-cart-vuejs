@@ -7,7 +7,7 @@ import UserFavorites from "@/views/UserFavorites";
 import ProductCreate from "@/views/ProductCreate";
 import Login from "@/views/Login";
 import Register from "@/views/Register";
-import firebase from "firebase";
+// import firebase from "firebase";
 
 Vue.use(Router);
 
