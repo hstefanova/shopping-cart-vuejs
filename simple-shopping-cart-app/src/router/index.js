@@ -56,14 +56,14 @@ const router = new Router({
   ]
 });
 
-router.beforeEach((to, from, next) => {
-  const currentUser = !!firebase.auth().currentUser;
-  console.log("currentUser: ", currentUser);
+// router.beforeEach((to, from, next) => {
+//   const currentUser = !!firebase.auth().currentUser;
+//   console.log("currentUser: ", currentUser);
 
-  if (to.matched.some(record => record.meta.requiresAuth) && !currentUser) {
-    next("/login");
-  }
-  next();
-});
+//   if (to.matched.some(record => record.meta.requiresAuth) && !currentUser) {
+//     next("/login");
+//   }
+//   next();
+// });
 
 export default router;

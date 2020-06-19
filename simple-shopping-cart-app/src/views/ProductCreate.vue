@@ -74,8 +74,6 @@
 <script>
 import { required } from "vuelidate/lib/validators";
 import { priceValidator } from "../validator/price";
-import firebase from "firebase";
-import { authCompleted } from "../store/helpers";
 
 export default {
   data() {
@@ -106,19 +104,9 @@ export default {
         author: "",
         price: ""
       };
-    },
-    logout: function() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$router.replace("login");
-        });
     }
   },
-  computed: {
-    ...authCompleted
-  },
+
   validations: {
     book: {
       title: { required },

@@ -1,5 +1,5 @@
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 
-export const authCompleted = {
-  ...mapGetters(["loggedIn"])
-};
+// export const authCompleted = {
+//   ...mapGetters(["loggedIn"])
+// };

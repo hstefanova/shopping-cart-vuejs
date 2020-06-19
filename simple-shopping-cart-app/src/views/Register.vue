@@ -1,71 +1,66 @@
 <template>
   <div>
-    <h2>Create a new account:</h2>
+    <h2>REGISTER:</h2>
     <div class="form">
-      <div class="form__row">
-        <BaseInput
-          label="Enter username:"
-          v-model="name"
-          type="text"
-          placeholder="Name..."
-        />
+      <p v-if="error" class="error">{{ error.message }}</p>
 
-        <BaseInput
-          label="Enter email:"
-          v-model="email"
-          type="email"
-          placeholder="Email..."
-        />
-      </div>
+      <form @submit.prevent="pressed">
+        <div class="form__row">
+          <BaseInput
+            label="Enter email test:"
+            v-model="email"
+            type="email"
+            placeholder="Email..."
+          />
+        </div>
 
-      <div class="form__row">
-        <BaseInput
-          label="Enter password:"
-          v-model="password"
-          type="password"
-          placeholder="Password..."
-        />
-      </div>
+        <div class="form__row">
+          <BaseInput
+            label="Enter password:"
+            v-model="password"
+            type="password"
+            placeholder="Password..."
+          />
+        </div>
 
-      <div class="form__actions">
-        <BaseButton @click="register">Sign Up</BaseButton>
-        <p>
-          You have an account?
-          <router-link :to="{ name: 'login' }">
-            Login
-          </router-link>
-        </p>
-      </div>
+        <div class="form__actions">
+          <BaseButton>Sign Up</BaseButton>
+          <p>
+            You have an account?
+            <router-link :to="{ name: 'login' }">
+              Login
+            </router-link>
+          </p>
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
-import firebase from "firebase";
+// import firebase from "firebase";
 export default {
   data() {
     return {
-      user: {
-        name: "",
-        email: "",
-        password: ""
-      }
+      email: "",
+      password: "",
+      error: ""
     };
   },
   methods: {
-    register() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.user.email, this.user.password)
-        .then(
-          function(user) {
-            alert("Your account has been created!" + user);
-          },
-          function(err) {
-            alert("Oops, " + err.message);
-          }
-        );
-    }
+    // register() {
+    //   firebase
+    //     .auth()
+    //     .createUserWithEmailAndPassword(this.user.email, this.user.password)
+    //     .then(
+    //       function(user) {
+    //         alert("Your account has been created!" + user);
+    //       },
+    //       function(err) {
+    //         alert("Oops, " + err.message);
+    //       }
+    //     );
+    // }
   }
 };
 </script>

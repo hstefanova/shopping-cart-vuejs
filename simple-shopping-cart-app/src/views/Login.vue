@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Sign In:</h2>
+    <h2>LOGIN:</h2>
     <div class="form">
       <div class="form__row">
         <BaseInput
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+// import firebase from "firebase";
 
 export default {
   data() {
@@ -45,21 +45,21 @@ export default {
   },
 
   methods: {
-    login() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.user.email, this.user.password)
-        .then(
-          () => {
-            this.$router.push({ name: "home" });
-            location.reload();
-          },
-          err => {
-            console.log(err);
-            alert("Oops, " + err.message);
-          }
-        );
-    }
+    // login() {
+    //   firebase
+    //     .auth()
+    //     .signInWithEmailAndPassword(this.user.email, this.user.password)
+    //     .then(
+    //       () => {
+    //         this.$router.push({ name: "home" });
+    //         location.reload();
+    //       },
+    //       err => {
+    //         console.log(err);
+    //         alert("Oops, " + err.message);
+    //       }
+    //     );
+    // }
   }
 };
 </script>

@@ -11,41 +11,41 @@
       <li>
         <router-link :to="{ name: 'favs' }"> Favs </router-link>
       </li>
-      <li>
-        <router-link v-if="loggedIn" :to="{ name: 'product-create' }">
+      <li class="red">
+        <router-link :to="{ name: 'product-create' }">
           Book Create
         </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'login' }" class="btn" v-if="!loggedIn">
+        <router-link :to="{ name: 'login' }" class="btn">
           Login
         </router-link>
 
-        <button v-if="loggedIn" @click="logout" type="button">Logout</button>
+        <button type="button">Logout</button>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-import { authCompleted } from "../store/helpers";
-import firebase from "firebase";
+// import { authCompleted } from "../store/helpers";
+// import firebase from "firebase";
 
 export default {
   methods: {
-    logout: function() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          location.reload();
-          this.$router.push({ name: "home" });
-        });
-    }
-  },
-  computed: {
-    ...authCompleted
+    // logout: function() {
+    //   firebase
+    //     .auth()
+    //     .signOut()
+    //     .then(() => {
+    //       location.reload();
+    //       this.$router.push({ name: "home" });
+    //     });
+    // }
   }
+  // computed: {
+  //   ...authCompleted
+  // }
 };
 </script>
 
@@ -65,6 +65,10 @@ export default {
 
   a {
     color: inherit;
+  }
+
+  .red a {
+    color: lightgreen;
   }
 }
 
