@@ -75,6 +75,15 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    booksByTerm: state => {
+      return state.books.filter(book => {
+        return (
+          JSON.stringify(book)
+            .toLowerCase()
+            .indexOf(state.term.toLowerCase()) !== -1
+        );
+      });
+    },
     cartUniqueBooks: state => {
       return state.cartBooks.filter((value, index, self) => {
         return self.indexOf(value) === index;
