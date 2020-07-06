@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import BookService from "@/services/BookService";
+import { db } from "../main";
 
 Vue.use(Vuex);
 
@@ -12,8 +12,18 @@ export default new Vuex.Store({
     favBooks: []
   },
   mutations: {
-    SET_BOOKS(state, books) {
-      state.books = books;
+    SET_BOOKS(state) {
+      state.books = [];
+      db.collection("books").onSnapshot(snapshot => {
+        snapshot.forEach(book => {
+          state.books.push({
+            id: book.id,
+            title: book.data().title,
+            author: book.data().author,
+            price: book.data().price
+          });
+        });
+      });
     },
     SET_TERM(state, term) {
       state.term = term;
@@ -38,19 +48,18 @@ export default new Vuex.Store({
   },
   actions: {
     fetchBooks({ commit }) {
-      BookService.getBooks()
-        .then(response => {
-          commit("SET_BOOKS", response.data);
-        })
-        .catch(err => "There is an error: " + err.response);
+      commit("SET_BOOKS");
     },
     searchByTerm({ commit }, term) {
       commit("SET_TERM", term);
     },
     createBook({ commit }, book) {
-      return BookService.postBook(book).then(() => {
-        commit("ADD_CREATED_BOOK", book);
-      });
+      return db
+        .collection("books")
+        .add(book)
+        .then(() => {
+          commit("ADD_CREATED_BOOK");
+        });
     },
     addToFavs({ commit }, book) {
       commit("ADD_TO_FAVS", book);
@@ -66,15 +75,6 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    booksByTerm: state => {
-      return state.books.filter(book => {
-        return (
-          JSON.stringify(book)
-            .toLowerCase()
-            .indexOf(state.term.toLowerCase()) !== -1
-        );
-      });
-    },
     cartUniqueBooks: state => {
       return state.cartBooks.filter((value, index, self) => {
         return self.indexOf(value) === index;
@@ -90,8 +90,5 @@ export default new Vuex.Store({
         return "No books in the cart";
       }
     }
-    // loggedIn: () => {
-    //   return !firebase.auth().currentUser;
-    // }
   }
 });

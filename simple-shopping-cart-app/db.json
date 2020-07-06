@@ -2,6 +2,7 @@
   "books": [
     {
       "id": 11,
+      "genre": "novel",
       "title": "A man called Ove",
       "author": "Frederik Backman",
       "price": 20,
@@ -10,52 +11,24 @@
     {
       "id": 22,
       "title": "Brit-Marie was here",
+      "genre": "novel",
       "author": "Frederik Backman",
       "price": 21.99,
       "image": "https://images-na.ssl-images-amazon.com/images/I/819By0+rUpL.jpg"
     },
     {
       "id": 33,
+      "genre": "fantasy",
       "title": "The Witcher - The last wish",
       "author": "Andrezej Sapkowski",
       "price": 16,
       "image": "https://images-na.ssl-images-amazon.com/images/I/91cO-IrKBpL.jpg"
     },
     {
-      "id": 10863,
-      "title": "Harry Potter",
-      "author": "J.K.Rowling",
-      "price": "44.99"
-    },
-    {
-      "id": 67881,
-      "title": "test",
-      "author": "test",
-      "price": "11.2"
-    },
-    {
-      "id": 90576,
-      "title": "test",
-      "author": "tets",
-      "price": "2"
-    },
-    {
-      "id": 15539,
-      "title": "New book",
-      "author": "new",
-      "price": "22.22"
-    },
-    {
-      "id": 21715,
-      "title": "test",
-      "author": "test",
-      "price": "11.4"
-    },
-    {
-      "id": 33481,
-      "title": "20-03 Book",
-      "author": "Test",
-      "price": "22.50"
+      "id": 15958,
+      "title": "Test",
+      "author": "tEST",
+      "price": "22.4"
     }
   ]
 }

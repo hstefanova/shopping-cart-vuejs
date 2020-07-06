@@ -37,6 +37,22 @@
 
       <div class="form__row">
         <BaseInput
+          v-model="book.type"
+          type="text"
+          placeholder="Book type"
+          :class="{ error: $v.book.type.$error }"
+          @blur="$v.book.type.$touch()"
+        />
+
+        <template v-if="$v.book.type.$error">
+          <p v-if="!$v.book.type.required" class="error">
+            The book type is required
+          </p>
+        </template>
+      </div>
+
+      <div class="form__row">
+        <BaseInput
           v-model="book.price"
           type="text"
           placeholder="Book Price"
@@ -51,6 +67,37 @@
 
           <p v-if="!$v.book.price.priceValidator">The price is not correct.</p>
         </template>
+      </div>
+
+      <div class="form__row">
+        <BaseInput
+          v-model="book.imageSrc"
+          type="text"
+          placeholder="Book cover"
+        />
+      </div>
+
+      <div class="form__row">
+        <BaseInput
+          v-model="book.shortDescription"
+          type="text"
+          placeholder="Book short description"
+          :class="{ error: $v.book.shortDescription.$error }"
+          @blur="$v.book.shortDescription.$touch()"
+        />
+
+        <template v-if="$v.book.shortDescription.$error">
+          <p v-if="!$v.book.shortDescription.required" class="error">
+            The book short description is required
+          </p>
+        </template>
+      </div>
+
+      <div class="form__row">
+        <BaseTextarea
+          v-model="book.description"
+          placeholder="Add book description here"
+        />
       </div>
 
       <div class="form__actions">
@@ -88,13 +135,14 @@ export default {
       }
     },
     createBookObject: function() {
-      const id = Math.floor(Math.random() * 100000);
-
       return {
-        id: id,
         title: "",
         author: "",
-        price: ""
+        price: "",
+        type: "",
+        imageSrc: "",
+        shortDescription: "",
+        description: ""
       };
     }
   },
@@ -103,10 +151,12 @@ export default {
     book: {
       title: { required },
       author: { required },
+      type: { required },
       price: {
         required,
         priceValidator
-      }
+      },
+      shortDescription: { required }
     }
   }
 };

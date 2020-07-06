@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <label v-if="label"> {{ label }}</label>
-    <input
+    <textarea
       :value="value"
       @input="updateValue"
       v-bind="$attrs"
@@ -39,19 +39,8 @@ export default {
 </script>
 
 <style>
-.field input {
+.field textarea {
   width: 100%;
-  height: 44px;
-}
-
-.field label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.checkbox input {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
+  height: 100px;
 }
 </style>

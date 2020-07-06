@@ -2,13 +2,14 @@ import Vue from "vue";
 import App from "./App.vue";
 import store from "./store";
 import router from "./router";
-import firebase from "firebase/app";
+import * as firebase from "firebase";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 import Vuelidate from "vuelidate";
 
 Vue.use(Vuelidate);
 
+//Global registration of components
 const requireComponent = require.context(
   "./components/base",
   true,
@@ -32,6 +33,7 @@ requireComponent.keys().forEach(fileName => {
 
 Vue.config.productionTip = false;
 
+// Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDdrV2GtOZrMQU0E6B5MOHA8zBzrNRQ5k8",
   authDomain: "shopping-cart-app-839d6.firebaseapp.com",
@@ -43,6 +45,8 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
+export const db = firebase.firestore();
 
 let app;
 firebase.auth().onAuthStateChanged(() => {

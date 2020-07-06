@@ -2,7 +2,7 @@
   <div class="products">
     <div class="products__inner">
       <BaseProduct
-        v-for="book in booksByTerm"
+        v-for="book in books"
         :book="book"
         :key="book.id"
       ></BaseProduct>
@@ -11,14 +11,18 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+// export const db = firebase.firestore();
+
+// import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default {
-  computed: {
-    ...mapGetters(["booksByTerm"])
-  },
-  created() {
+  beforeCreate: function() {
     this.$store.dispatch("fetchBooks");
+  },
+  computed: {
+    // ...mapGetters(["booksByTerm"]),
+    ...mapState(["books"])
   }
 };
 </script>
