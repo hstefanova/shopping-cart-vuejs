@@ -14,6 +14,7 @@
             <p class="product__author">
               <em>{{ book.author }}</em>
             </p>
+            <!-- <small>Type:{{ book.type }}</small> -->
             <p class="product__price">${{ price }}</p>
           </div>
 

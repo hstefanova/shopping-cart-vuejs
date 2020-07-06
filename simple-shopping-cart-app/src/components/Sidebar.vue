@@ -2,12 +2,35 @@
   <aside class="sidebar">
     Sidebar with categories goes here
 
-    <div class="checkbox"></div>
+    <BaseCheckbox v-model="thriller" @input="searchByTerm" label="Thriller" />
+    <BaseCheckbox v-model="novel" @input="searchByTerm" label="Novel" />
+    <BaseCheckbox v-model="fantasy" @input="searchByTerm" label="Fantasy" />
   </aside>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      thriller: false,
+      novel: false,
+      fantasy: false
+    };
+  },
+  methods: {
+    searchByTerm: function() {
+      if (this.novel) {
+        this.$store.dispatch("searchByTerm", "novel");
+      } else if (this.fantasy) {
+        this.$store.dispatch("searchByTerm", "fantasy");
+      } else if (this.thriller) {
+        this.$store.dispatch("searchByTerm", "thriller");
+      } else {
+        this.$store.dispatch("searchByTerm", "");
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
