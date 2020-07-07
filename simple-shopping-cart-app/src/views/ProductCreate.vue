@@ -140,7 +140,7 @@ export default {
         author: "",
         price: "",
         type: "",
-        imageSrc: "",
+        image: "",
         shortDescription: "",
         description: ""
       };

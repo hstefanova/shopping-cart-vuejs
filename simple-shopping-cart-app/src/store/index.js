@@ -24,7 +24,7 @@ export default new Vuex.Store({
             type: book.data().type,
             description: book.data().description,
             shortDescription: book.data().shortDescription,
-            imageSrc: book.data().imageSrc
+            image: book.data().image
           });
         });
       });

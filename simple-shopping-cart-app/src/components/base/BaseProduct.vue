@@ -5,7 +5,9 @@
         <div
           v-if="book.image"
           class="product__image"
-          :style="{ backgroundImage: 'url(' + book.image + ')' }"
+          :style="{
+            backgroundImage: `url(${bookImageUrl})`
+          }"
         ></div>
 
         <div class="product__body">
@@ -13,8 +15,10 @@
             <h3 class="product__title">{{ book.title }}</h3>
             <p class="product__author">
               <em>{{ book.author }}</em>
+              <br />
+              <strong style="color:red">{{ book.image }}</strong>
             </p>
-            <!-- <small>Type:{{ book.type }}</small> -->
+            <small>{{ book.type }}</small>
             <p class="product__price">${{ price }}</p>
           </div>
 
@@ -44,8 +48,15 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
   props: ["book", "addRemoveBtn"],
+  data() {
+    return {
+      bookImageUrl: ""
+    };
+  },
   computed: {
     price: function() {
       return parseFloat(this.book.price).toFixed(2);
@@ -60,6 +71,16 @@ export default {
     },
     removeFromFavs: function() {
       this.$store.dispatch("removeFromFavs", this.book);
+    }
+  },
+  created() {
+    if (this.book.image) {
+      firebase
+        .storage()
+        .ref("books")
+        .child(`${this.book.image}`)
+        .getDownloadURL()
+        .then(response => (this.bookImageUrl = response));
     }
   }
 };

@@ -3,8 +3,6 @@
     <div class="main__body">
       <SearchBar />
       <div class="main__inner">
-        <Sidebar />
-
         <ProductList />
       </div>
     </div>
@@ -13,12 +11,10 @@
 
 <script>
 import ProductList from "@/components/ProductList";
-import Sidebar from "@/components/Sidebar";
 import SearchBar from "@/components/SearchBar";
 export default {
   components: {
     ProductList,
-    Sidebar,
     SearchBar
   }
 };
@@ -28,6 +24,7 @@ export default {
 .main {
   .main__inner {
     display: flex;
+    justify-content: center;
     margin: 0 -15px;
   }
 
