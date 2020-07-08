@@ -6,7 +6,7 @@
         <h3>${{ subtotal }}</h3>
       </div>
       <div class="cart__item-body">
-        <p>${{ price }} x {{ qty }}</p>
+        <p class="price-field">${{ price }} x {{ qty }}</p>
         <div class="cart__item-actions">
           <BaseButton btnClass="btn--square" @click="addToCart"> + </BaseButton>
 
@@ -78,12 +78,16 @@ export default {
 }
 
 .cart__item .cart__item-actions {
-  padding-left: 20px;
+  padding-left: 10px;
   display: inline-block;
   text-align: right;
 }
 
 .btn + .btn {
   margin-left: 10px;
+}
+
+.price-field {
+  min-width: 80px;
 }
 </style>

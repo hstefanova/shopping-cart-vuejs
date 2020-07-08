@@ -3,18 +3,18 @@
     <h2>LOGIN:</h2>
     <div class="form">
       <div class="form__row">
-        <BaseInput v-model="user.email" type="email" placeholder="Email..." />
+        <BaseInput v-model="email" type="email" placeholder="Email..." />
       </div>
 
       <div class="form__row">
         <BaseInput
-          v-model="user.password"
+          v-model="password"
           type="password"
           placeholder="Password..."
         />
       </div>
 
-      <p>{{ errors }}</p>
+      <p v-if="error" class="error">The username or password is incorrect</p>
 
       <div class="form__actions">
         <BaseButton @click="login">Sign In</BaseButton>
@@ -34,11 +34,9 @@ import "firebase/auth";
 export default {
   data() {
     return {
-      user: {
-        email: "",
-        password: ""
-      },
-      errors: ""
+      email: "",
+      password: "",
+      error: ""
     };
   },
 
@@ -46,13 +44,13 @@ export default {
     login() {
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.user.email, this.user.password)
+        .signInWithEmailAndPassword(this.email, this.password)
         .then(
           () => {
             this.$router.push({ name: "product-create" });
           },
           err => {
-            this.errors = err;
+            this.error = err;
           }
         );
     }

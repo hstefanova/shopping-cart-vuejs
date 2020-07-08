@@ -173,12 +173,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.error {
-  color: red;
-  font-size: 16px;
-  margin: 5px 0 15px;
-}
-
 .field.error {
   margin: 0;
 }
