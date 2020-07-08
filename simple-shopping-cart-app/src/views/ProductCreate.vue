@@ -70,11 +70,7 @@
       </div>
 
       <div class="form__row">
-        <BaseInput
-          v-model="book.imageSrc"
-          type="text"
-          placeholder="Book cover"
-        />
+        <BaseInput v-model="book.image" type="text" placeholder="Book cover" />
       </div>
 
       <div class="form__row">

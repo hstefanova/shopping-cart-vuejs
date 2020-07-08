@@ -62,7 +62,7 @@ input {
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 5px 2px rgb(219, 92, 92);
+    box-shadow: 0 0 5px 2px #000;
   }
 }
 

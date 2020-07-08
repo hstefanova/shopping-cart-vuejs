@@ -23,13 +23,18 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .icon-wrapper {
   display: inline-flex;
   align-items: center;
   color: rgba(0, 0, 0, 0.4);
   font-size: 1rem;
   font-weight: 600;
+  transition: color 0.2s;
+
+  &:hover {
+    color: red;
+  }
 }
 .icon {
   stroke: currentColor;

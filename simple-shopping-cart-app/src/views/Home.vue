@@ -20,27 +20,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .main {
-  .main__inner {
-    display: flex;
-    justify-content: center;
-    margin: 0 -15px;
-  }
-
-  .sidebar {
-    width: 20%;
-    margin: 0 15px;
-  }
-  .products {
-    width: 80%;
-    margin: 0 15px;
-  }
+  padding: 50px 0;
 
   .search {
-    margin: 50px auto;
+    margin: 0px auto 50px;
     width: 50%;
-    // margin: 0 auto;
   }
 }
 </style>

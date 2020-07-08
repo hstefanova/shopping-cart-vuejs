@@ -1,12 +1,6 @@
 <template>
   <div class="products">
-    <div class="products__inner">
-      <BaseProduct
-        v-for="book in booksByTerm"
-        :book="book"
-        :key="book.id"
-      ></BaseProduct>
-    </div>
+    <BaseProduct v-for="book in booksByTerm" :book="book" :key="book.id" />
   </div>
 </template>
 
@@ -23,9 +17,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .products {
   position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -10px;
 
   .hint {
     position: absolute;
@@ -34,17 +33,8 @@ export default {
     padding: 20px 0;
   }
 
-  .products__inner {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin: -10px;
-  }
-
   .product {
-    flex-basis: calc(25% - 20px);
-    align-self: stretch;
-    min-height: 260px;
+    width: calc(20% - 20px);
     margin: 10px;
   }
 }

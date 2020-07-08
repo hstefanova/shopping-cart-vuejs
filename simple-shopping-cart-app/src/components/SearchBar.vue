@@ -51,7 +51,7 @@ export default {
     transform: translateY(-50%);
     stroke: #000;
     background: #fff;
-    color: lightcoral;
+    color: #000;
   }
 
   .search__term {

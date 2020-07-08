@@ -2,14 +2,12 @@
   <div class="section-favs">
     <div class="shell">
       <div class="products">
-        <div class="products__inner">
-          <BaseProduct
-            v-for="book in favBooks"
-            :book="book"
-            :addRemoveBtn="true"
-            :key="book.id"
-          />
-        </div>
+        <BaseProduct
+          v-for="book in favBooks"
+          :book="book"
+          :addRemoveBtn="true"
+          :key="book.id"
+        />
       </div>
     </div>
   </div>

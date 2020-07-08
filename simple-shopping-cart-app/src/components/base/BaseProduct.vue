@@ -1,6 +1,9 @@
 <template>
   <div class="product">
-    <router-link :to="{ name: 'product-info', params: { id: book.id } }">
+    <router-link
+      class="product__link"
+      :to="{ name: 'product-info', params: { id: book.id } }"
+    >
       <div class="product__inner">
         <div
           v-if="book.image"
@@ -10,37 +13,33 @@
           }"
         ></div>
 
-        <div class="product__body">
-          <div class="product__content">
-            <h3 class="product__title">{{ book.title }}</h3>
-            <p class="product__author">
-              <em>{{ book.author }}</em>
-              <br />
-              <strong style="color:red">{{ book.image }}</strong>
-            </p>
-            <small>{{ book.type }}</small>
-            <p class="product__price">${{ price }}</p>
-          </div>
+        <div class="product__content">
+          <h3 class="product__title">{{ book.title }}</h3>
+          <p class="product__author">
+            <em>{{ book.author }}</em>
+          </p>
+          <small>{{ book.type }}</small>
+          <p class="product__price">${{ price }}</p>
+        </div>
 
-          <div class="product__actions">
-            <BaseButton @click.prevent="addToCart">Add to Cart</BaseButton>
+        <div class="product__actions">
+          <BaseButton @click.prevent="addToCart">Add to Cart</BaseButton>
 
-            <BaseButton
-              v-if="!addRemoveBtn"
-              btnClass="btn--transparent"
-              @click.prevent="addToFavs"
-            >
-              <BaseIcon name="heart" />
-            </BaseButton>
+          <BaseButton
+            v-if="!addRemoveBtn"
+            btnClass="btn--transparent"
+            @click.prevent="addToFavs"
+          >
+            <BaseIcon name="heart" />
+          </BaseButton>
 
-            <BaseButton
-              v-if="addRemoveBtn"
-              btnClass="btn--transparent"
-              @click.prevent="removeFromFavs"
-            >
-              <BaseIcon name="x" />
-            </BaseButton>
-          </div>
+          <BaseButton
+            v-if="addRemoveBtn"
+            btnClass="btn--transparent"
+            @click.prevent="removeFromFavs"
+          >
+            <BaseIcon name="x" />
+          </BaseButton>
         </div>
       </div>
     </router-link>
@@ -88,9 +87,9 @@ export default {
 
 <style lang="scss" scoped>
 .product {
+  position: relative;
   width: 100%;
   background: #fff;
-  padding: 20px;
   border-radius: 5px;
   font-weight: 300;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -101,20 +100,17 @@ export default {
     transform: scale(1.01);
   }
 
-  .product__image-wrapper {
-    display: flex;
-  }
-
-  .product__body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+  .product__link {
+    display: block;
   }
 
   .product__title {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 300;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
   }
 
   .product__author {
@@ -122,8 +118,18 @@ export default {
   }
 
   .product__price {
-    padding: 10px 0;
+    padding: 20px 0;
+    font-size: 20px;
   }
+
+  .product__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+  }
+
   .product__image {
     display: inline-block;
     width: 100%;
@@ -134,11 +140,20 @@ export default {
     margin-bottom: 10px;
   }
 
+  .product__content {
+    padding: 0 0 30px;
+  }
+
   .product__actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    align-self: flex-end;
     width: 100%;
+    padding: 0 20px 20px;
   }
 }
 </style>
