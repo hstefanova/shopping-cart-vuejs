@@ -17,6 +17,7 @@
 import { mapState } from "vuex";
 
 export default {
+  props: ["id"],
   computed: {
     ...mapState(["favBooks"])
   }

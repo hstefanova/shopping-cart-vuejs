@@ -47,6 +47,7 @@ export default {
       this.$store.dispatch("addToCart", this.book);
     },
     addToFavs: function() {
+      this.book.id = this.id;
       this.$store.dispatch("addToFavs", this.book);
     }
   },
