@@ -70,6 +70,12 @@ input {
   display: none;
 }
 
+.error {
+  color: red;
+  font-size: 16px;
+  margin: 5px 0 15px;
+}
+
 .shell {
   max-width: 1440px;
   margin: 0 auto;

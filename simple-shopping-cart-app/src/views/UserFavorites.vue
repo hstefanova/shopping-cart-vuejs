@@ -24,4 +24,25 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.products {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: -10px;
+
+  .hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+  }
+
+  .product {
+    width: calc(20% - 20px);
+    margin: 10px;
+  }
+}
+</style>
