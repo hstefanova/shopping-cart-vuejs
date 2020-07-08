@@ -3,22 +3,18 @@
     <h2>LOGIN:</h2>
     <div class="form">
       <div class="form__row">
-        <BaseInput
-          label="Enter your email:"
-          v-model="user.email"
-          type="email"
-          placeholder="Email..."
-        />
+        <BaseInput v-model="user.email" type="email" placeholder="Email..." />
       </div>
 
       <div class="form__row">
         <BaseInput
-          label="Enter your password:"
           v-model="user.password"
           type="password"
           placeholder="Password..."
         />
       </div>
+
+      <p>{{ errors }}</p>
 
       <div class="form__actions">
         <BaseButton @click="login">Sign In</BaseButton>
@@ -41,7 +37,8 @@ export default {
       user: {
         email: "",
         password: ""
-      }
+      },
+      errors: ""
     };
   },
 
@@ -55,7 +52,7 @@ export default {
             this.$router.push({ name: "product-create" });
           },
           err => {
-            console.log(err);
+            this.errors = err;
           }
         );
     }
@@ -66,13 +63,30 @@ export default {
 <style lang="scss" scoped>
 h2 {
   text-align: center;
+  margin-bottom: 30px;
 }
+
+a {
+  text-decoration: underline;
+}
+
 .form {
   width: 500px;
   margin: 0 auto;
 
   .form__row + .form__row {
-    margin-top: 30px;
+    margin-top: 15px;
+  }
+
+  .form__actions {
+    text-align: center;
+    margin: 30px 0 0;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 44px;
   }
 }
 </style>

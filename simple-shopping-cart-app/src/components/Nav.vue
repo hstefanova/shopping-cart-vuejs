@@ -13,7 +13,7 @@
       </li>
       <li class="red">
         <router-link :to="{ name: 'product-create' }" v-if="loggedIn">
-          Add New Book
+          Add Book
         </router-link>
       </li>
       <li>
@@ -84,6 +84,6 @@ export default {
 }
 
 .red {
-  color: lightgreen;
+  color: lightpink;
 }
 </style>
