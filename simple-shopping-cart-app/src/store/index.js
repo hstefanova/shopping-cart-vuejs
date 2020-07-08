@@ -20,7 +20,11 @@ export default new Vuex.Store({
             id: book.id,
             title: book.data().title,
             author: book.data().author,
-            price: book.data().price
+            price: book.data().price,
+            type: book.data().type,
+            description: book.data().description,
+            shortDescription: book.data().shortDescription,
+            image: book.data().image
           });
         });
       });

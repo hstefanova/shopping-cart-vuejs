@@ -21,16 +21,27 @@ export default {
   padding: 10px 15px;
   text-decoration: none;
   text-transform: uppercase;
-  background: lightcoral;
+  background: #000;
+  border-radius: 3px;
   color: #fff;
   font: 14px/1 "Arial", sans-serif;
   line-height: 1;
   border: 0;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
 
   &:hover {
-    background: rgb(219, 92, 92);
+    background: rgba(0, 0, 0, 0.7);
     cursor: pointer;
+  }
+}
+
+.btn--icon {
+  padding: 0;
+  background: none;
+  border: 0;
+
+  &:hover {
+    background: none;
   }
 }
 
@@ -47,13 +58,14 @@ export default {
 }
 
 .btn--transparent {
-  background: none;
-  border-radius: 0;
-  border: 0;
-  padding: 0;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #fff;
+
   &:hover {
-    background: none;
-    border: 0;
+    color: #000;
+    background: #fff;
+    border-color: #fff;
   }
 }
 </style>

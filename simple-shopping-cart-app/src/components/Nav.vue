@@ -13,16 +13,20 @@
       </li>
       <li class="red">
         <router-link :to="{ name: 'product-create' }" v-if="loggedIn">
-          Add New Book
+          Add Book
         </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'login' }" class="btn" v-if="!loggedIn">
+        <router-link
+          :to="{ name: 'login' }"
+          class="btn btn--transparent"
+          v-if="!loggedIn"
+        >
           Login
         </router-link>
 
         <div v-else>
-          <button type="button" class="btn btn--red" @click="logout">
+          <button type="button" class="btn btn--transparent" @click="logout">
             Logout
           </button>
         </div>
@@ -77,21 +81,9 @@ export default {
       margin-left: 10px;
     }
   }
-
-  a {
-    color: inherit;
-  }
 }
 
 .red {
-  color: lightgreen;
-}
-
-.btn {
-  background: green;
-}
-
-.btn--red {
-  background: red;
+  color: lightpink;
 }
 </style>

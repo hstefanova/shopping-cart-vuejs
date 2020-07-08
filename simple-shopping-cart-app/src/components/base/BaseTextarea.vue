@@ -38,9 +38,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .field textarea {
   width: 100%;
   height: 100px;
+  font-family: Quicksand, sans-serif;
+  padding: 10px;
 }
 </style>

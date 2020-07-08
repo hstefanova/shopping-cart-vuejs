@@ -1,21 +1,23 @@
 <template>
   <div class="cart">
-    <h1 class="cart__title">Shopping Cart</h1>
+    <div class="shell">
+      <h1 class="cart__title">Shopping Cart</h1>
 
-    <div class="cart__body">
-      <ShoppingCartItem
-        v-for="(book, index) in cartUniqueBooks"
-        :key="index"
-        :book="book"
-      />
-    </div>
+      <div class="cart__body">
+        <ShoppingCartItem
+          v-for="(book, index) in cartUniqueBooks"
+          :key="index"
+          :book="book"
+        />
+      </div>
 
-    <div class="cart__actions">
-      <p v-if="cartBooks.length" class="cart__total">
-        Total:
-        <strong>${{ cartTotal }}</strong>
-      </p>
-      <p v-else>{{ cartTotal }}</p>
+      <div class="cart__actions">
+        <p v-if="cartBooks.length" class="cart__total">
+          Total:
+          <strong>${{ cartTotal }}</strong>
+        </p>
+        <p v-else>{{ cartTotal }}</p>
+      </div>
     </div>
   </div>
 </template>
