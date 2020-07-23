@@ -1,12 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { db } from "../main";
-
+import firebase from "firebase";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     book: {},
+    bookImageUrl: "",
     books: [],
     term: "",
     cartBooks: [],
@@ -34,6 +35,9 @@ export default new Vuex.Store({
     SET_BOOK(state, book) {
       state.book = book;
     },
+    SET_BOOK_URL(state, bookImageUrl) {
+      state.bookImageUrl = bookImageUrl;
+    },
     SET_TERM(state, term) {
       state.term = term;
     },
@@ -56,14 +60,27 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    fetchBook({ commit }, bookId) {
-      return db
-        .collection("books")
+    fetchBook({ state, commit }, bookId) {
+      state.book = {};
+
+      db.collection("books")
         .doc(bookId)
         .get()
         .then(doc => {
           commit("SET_BOOK", doc.data());
-        });
+        })
+        .then(() => {
+          firebase
+            .storage()
+            .ref("books")
+            .child(`${state.book.image}`)
+            .getDownloadURL()
+            .then(bookUrl => commit("SET_BOOK_URL", bookUrl));
+        })
+        .catch(err => console.log("There is an error: ", err));
+    },
+    fetchBookImageUrl({ commit }) {
+      commit("SET_BOOK_URL");
     },
     fetchBooks({ commit }) {
       commit("SET_BOOKS");
