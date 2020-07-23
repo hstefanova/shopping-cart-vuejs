@@ -33,14 +33,10 @@
 </template>
 
 <script>
-// import { db } from "@/main";
-// import firebase from "firebase";
-
 import { mapState } from "vuex";
 
 export default {
   props: ["id"],
-
   computed: {
     ...mapState(["book", "bookImageUrl"])
   },
@@ -52,9 +48,6 @@ export default {
       this.book.id = this.id;
       this.$store.dispatch("addToFavs", this.book);
     }
-  },
-  created() {
-    this.$store.dispatch("fetchBook", this.id);
   }
 };
 </script>

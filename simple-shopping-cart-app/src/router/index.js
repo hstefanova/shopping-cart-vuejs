@@ -7,7 +7,8 @@ import UserFavorites from "@/views/UserFavorites";
 import ProductCreate from "@/views/ProductCreate";
 import Login from "@/views/Login";
 import Register from "@/views/Register";
-
+import NProgress from "nprogress";
+import store from "../store";
 import * as firebase from "firebase";
 import "firebase/auth";
 
@@ -25,7 +26,12 @@ const router = new Router({
       path: "/product-info/:id",
       name: "product-info",
       component: ProductShow,
-      props: true
+      props: true,
+      beforeEnter(to, from, next) {
+        store.dispatch("fetchBook", to.params.id).then(() => {
+          next();
+        });
+      }
     },
     {
       path: "/product-create",
@@ -59,6 +65,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+  NProgress.start();
   const currentUser = !!firebase.auth().currentUser;
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!currentUser) {
@@ -66,7 +73,13 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
-  } else next();
+  } else {
+    next();
+  }
+});
+
+router.afterEach(() => {
+  NProgress.done();
 });
 
 export default router;

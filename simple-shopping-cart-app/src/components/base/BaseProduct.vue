@@ -1,9 +1,6 @@
 <template>
   <div class="product">
-    <router-link
-      class="product__link"
-      :to="{ name: 'product-info', params: { id: book.id } }"
-    >
+    <router-link class="product__link" :to="{ name: 'product-info', params: { id: book.id } }">
       <div class="product__inner">
         <div
           v-if="book.image"
@@ -25,11 +22,7 @@
         <div class="product__actions">
           <BaseButton @click.prevent="addToCart">Add to Cart</BaseButton>
 
-          <BaseButton
-            v-if="!addRemoveBtn"
-            btnClass="btn--transparent"
-            @click.prevent="addToFavs"
-          >
+          <BaseButton v-if="!addRemoveBtn" btnClass="btn--transparent" @click.prevent="addToFavs">
             <BaseIcon name="heart" />
           </BaseButton>
 

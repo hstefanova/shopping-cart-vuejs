@@ -1,7 +1,6 @@
 <template>
   <div class="shell">
     <div class="main__body">
-      <SearchBar />
       <div class="main__inner">
         <ProductList />
       </div>
@@ -11,11 +10,9 @@
 
 <script>
 import ProductList from "@/components/ProductList";
-import SearchBar from "@/components/SearchBar";
 export default {
   components: {
-    ProductList,
-    SearchBar
+    ProductList
   }
 };
 </script>

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Vue from "vue";
 import Vuex from "vuex";
 import { db } from "../main";
@@ -62,8 +63,10 @@ export default new Vuex.Store({
   actions: {
     fetchBook({ state, commit }, bookId) {
       state.book = {};
+      state.bookImageUrl = "";
 
-      db.collection("books")
+      return db
+        .collection("books")
         .doc(bookId)
         .get()
         .then(doc => {
@@ -79,9 +82,7 @@ export default new Vuex.Store({
         })
         .catch(err => console.log("There is an error: ", err));
     },
-    fetchBookImageUrl({ commit }) {
-      commit("SET_BOOK_URL");
-    },
+
     fetchBooks({ commit }) {
       commit("SET_BOOKS");
     },
