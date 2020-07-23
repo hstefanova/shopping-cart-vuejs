@@ -2,14 +2,15 @@
   <section class="section-info">
     <div class="shell">
       <div class="section__inner">
-        <div class="section__image">
-          <img :src="bookImageUrl" alt="" width="400" />
-        </div>
+        <!-- <div class="section__image">
+          <img :src="bookImageUrl" alt width="400" />
+        </div>-->
         <div class="section__content">
           <header class="section__head">
             <h1>{{ book.title }}</h1>
             <p>
-              by <span>{{ book.author }}</span>
+              by
+              <span>{{ book.author }}</span>
             </p>
             <span class="type">{{ book.type }}</span>
           </header>
@@ -32,15 +33,15 @@
 </template>
 
 <script>
-import { db } from "@/main";
-import firebase from "firebase";
+// import { db } from "@/main";
+// import firebase from "firebase";
+
+import { mapState } from "vuex";
+
 export default {
   props: ["id"],
-  data() {
-    return {
-      book: {},
-      bookImageUrl: ""
-    };
+  computed: {
+    ...mapState(["book"])
   },
   methods: {
     addToCart: function() {
@@ -52,31 +53,34 @@ export default {
     }
   },
   created() {
-    if (this.id) {
-      db.collection("books")
-        .doc(this.id)
-        .get()
-        .then(doc => {
-          this.book = doc.data();
-        })
-        .then(() => {
-          if (this.book.image) {
-            firebase
-              .storage()
-              .ref("books")
-              .child(`${this.book.image}`)
-              .getDownloadURL()
-              .then(response => (this.bookImageUrl = response));
-          }
-        })
-        .catch(err => {
-          console.log("Error: ", err);
-        })
-        .finally(() => (this.isLoading = false));
-    } else {
-      `Book with ID ${this.id} was not found!`;
-    }
+    this.$store.dispatch("fetchBook", this.id);
   }
+
+  // created() {
+  //   if (this.id) {
+  //     db.collection("books")
+  //       .doc(this.id)
+  //       .get()
+  //       .then(doc => {
+  //         this.book = doc.data();
+  //       })
+  //       .then(() => {
+  //         if (this.book.image) {
+  //           firebase
+  //             .storage()
+  //             .ref("books")
+  //             .child(`${this.book.image}`)
+  //             .getDownloadURL()
+  //             .then(response => (this.bookImageUrl = response));
+  //         }
+  //       })
+  //       .catch(err => {
+  //         console.log("Error: ", err);
+  //       });
+  //   } else {
+  //     `Book with ID ${this.id} was not found!`;
+  //   }
+  // }
 };
 </script>
 

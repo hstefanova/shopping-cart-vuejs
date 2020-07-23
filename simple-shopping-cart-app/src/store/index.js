@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    book: {},
     books: [],
     term: "",
     cartBooks: [],
@@ -14,6 +15,7 @@ export default new Vuex.Store({
   mutations: {
     SET_BOOKS(state) {
       state.books = [];
+
       db.collection("books").onSnapshot(snapshot => {
         snapshot.forEach(book => {
           state.books.push({
@@ -28,6 +30,9 @@ export default new Vuex.Store({
           });
         });
       });
+    },
+    SET_BOOK(state, book) {
+      state.book = book;
     },
     SET_TERM(state, term) {
       state.term = term;
@@ -51,6 +56,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    fetchBook({ commit }, bookId) {
+      return db
+        .collection("books")
+        .doc(bookId)
+        .get()
+        .then(doc => {
+          commit("SET_BOOK", doc.data());
+        });
+    },
     fetchBooks({ commit }) {
       commit("SET_BOOKS");
     },

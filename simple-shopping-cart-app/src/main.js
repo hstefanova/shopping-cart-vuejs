@@ -6,6 +6,7 @@ import * as firebase from "firebase";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 import Vuelidate from "vuelidate";
+import "nprogress/nprogress.css";
 
 Vue.use(Vuelidate);
 
